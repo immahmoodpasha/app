@@ -92,16 +92,3 @@ input:focus{
   cursor: pointer;
   color: #1a173a;
 }
-
-#sign_up{
-  margin-top: 30px;
-  font-size: 15px;
-}
-
-#sign_up a{
-  color: #38327d;
-}
-
-#sign_up a:hover{
-  color: #1a173a;
-}

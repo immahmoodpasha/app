@@ -16,7 +16,6 @@ function Login() {
         </div>
         <button id='submit_btn'>Submit</button>
         <div id='forgot_pwd'><a>Forgot Password?</a></div>
-        <div id='sign_up'>Don't have an account? <a>Sign Up</a></div>
       </div>
     </div>
     
