@@ -1,23 +1,33 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import  './Inventory.css';
+import './Inventory.css';
+import apiClient from './apiClient/axiosObject.js';
+
 
 function Inventory() {
   const [data, setData] = useState([]);
 
+  const fetchData = async () => {
+  try {
+    const response = await apiClient.get('Products');
+    setData(response.data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
   useEffect(() => {
-    axios.get('http://localhost:3113/Products')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    fetchData();
   }, []);
+
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3113/Products/${id}`)
+      .then(() => fetchData())
+      .catch(error => console.error('Error deleting item:', error));
+  };
 
   return (
     <div>
-      <table >
+      <table>
         <thead>
           <tr>
             <th>Item Name</th>
@@ -39,7 +49,7 @@ function Inventory() {
                 <td>{item.status}</td>
                 <td>
                   <button>Edit</button>
-                  <button>Delete</button>
+                  <button onClick={() => handleDelete(item.id)}>Delete</button>
                 </td>
               </tr>
             ))

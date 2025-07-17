@@ -1,48 +1,5 @@
 {
-  "Products": [
-    {
-      "id": 1,
-      "itemName": "Wireless Mouse",
-      "category": "Electronics",
-      "quantity": 50,
-      "unitPrice": 12.99,
-      "status": "In Stock"
-    },
-    {
-      "id": 2,
-      "itemName": "Bluetooth Speaker",
-      "category": "Electronics",
-      "quantity": 20,
-      "unitPrice": 29.99,
-      "status": "In Stock"
-    },
-    {
-      "id": 3,
-      "itemName": "Notebook",
-      "category": "Stationery",
-      "quantity": 100,
-      "unitPrice": 2.49,
-      "status": "In Stock"
-    },
-    {
-      "id": 4,
-      "itemName": "Office Chair",
-      "category": "Furniture",
-      "quantity": 5,
-      "unitPrice": 89.99,
-      "status": "Low Stock"
-    },
-    {
-      "id": 5,
-      "itemName": "LED Monitor",
-      "category": "Electronics",
-      "quantity": 0,
-      "unitPrice": 149.99,
-      "status": "Out of Stock"
-    }
-  ]
-  ,
-  
+  "Products": [],
   "InventorySummary": {
     "totalItems": 400,
     "changePercentage": 4.2,
@@ -51,7 +8,4 @@
     "lowStock": 210,
     "outOfStock": 100
   }
-  
-
-  
 }
