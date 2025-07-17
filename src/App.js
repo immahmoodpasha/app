@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Inventory from './Inventory';
 import NewProduct from './NewProduct';
+import InventorySummary from './InventorySummary'
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/newproduct" element={<NewProduct />} />
+          <Route path="/InventorySummary" element={<InventorySummary />} />
         </Routes>
       </Router>
     </div>
