@@ -1,0 +1,23 @@
+{
+  "Products": [],
+  "InventorySummary": {
+    "totalItems": 610,
+    "changePercentage": 4.2,
+    "lastUpdated": "10:30 AM",
+    "inStock": 300,
+    "lowStock": 210,
+    "outOfStock": 100
+  },
+  "Users": [
+    {
+      "id": "a4c7",
+      "username": "ani",
+      "password": "123"
+    },
+    {
+      "id": "54f0",
+      "username": "pasha",
+      "password": "123"
+    }
+  ]
+}
