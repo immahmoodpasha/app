@@ -1,5 +1,8 @@
 import './Login.css';
+import { useNavigate } from 'react-router-dom';
+
 function Login() {
+  
   return (
     <div id='loginPage'>
       <div id='login_cont'>
@@ -14,7 +17,7 @@ function Login() {
             <input name="password" type="password" placeholder='Enter your password'/>
           </div>
         </div>
-        <button id='submit_btn'>Submit</button>
+        <button id='submit_btn' onClick={handleSubmit}>Submit</button>
         <div id='forgot_pwd'><a>Forgot Password?</a></div>
       </div>
     </div>
