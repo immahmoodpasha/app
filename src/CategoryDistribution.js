@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./CategoryDistribution.css";
-import InnventoryIcon from './assets/inventory_icon.png'
+import piecharticon from './assets/pie-chart-icon.png'
 
 
 
@@ -28,8 +28,8 @@ function CategoryDistribution() {
             <div className='total-Items-in-Categories'>
                 <h3 id='titems'>{totalItemsinCategories}</h3>
                 <span><p id='New-Categories-added'>↑ {RecentlyAddedCategories} new</p></span>
-                <p id='icon1'>
-                    <img src={InnventoryIcon} alt="Inventory Icon" style={{height: '30px'}}/>
+                <p id='iconcategory'>
+                    <img src={piecharticon} alt="piechart Icon " id="iconimg"/>
                 </p>
             </div>
             <p className="updated-time">Last updated: Today</p>

@@ -60,13 +60,16 @@
     font-size: 1.5rem;
 }
 
-#icon1{
+#iconcategory{
     margin-left: auto;
     margin-right: 20px;
-    background-color: rgb(241, 235, 235);
+    background-color: rgb(213, 246, 211);
+    border-radius: 100%;
     padding: 5px;
-    border-radius: 50%;
-   
+}
+
+#iconimg{
+    height: 25px;
 }
 
 .updated-time{

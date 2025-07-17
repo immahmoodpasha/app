@@ -33,7 +33,7 @@ function InventorySummary() {
                 <h3 id='titems'>{totalItems}</h3>
                 <span><p id='perchange'>↑ {changePercentage}% from last month</p></span>
                 <p id='icon1'>
-                    <img src={InnventoryIcon} alt="Inventory Icon" style={{height: '30px'}}/>
+                    <img src={InnventoryIcon} alt="Inventory Icon" style={{height: '25px'}}/>
                 </p>
             </div>
             <p className="updated-time">Last updated: Today at {lastUpdated}</p>
