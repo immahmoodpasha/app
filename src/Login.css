@@ -1,43 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+*{
+  font-family: "Lexend";
+}
+
 body{
     margin:0;
     padding:0;
     background-color:#EEEDFF; 
-    
+    overflow: hidden;
     
 }
 .main{
-    height: 100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    zoom:1.1;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
-form{
+#login_cont{
     background-color: white;
-    width:250px;
+    width:350px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-h2{
-    margin:auto;
+#welcome_back{
+  font-weight: 800;
+  color: #1a173a;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+#input_form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+#username, #password{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 label {
-  margin-top: 19px;
-  margin-bottom: 10px;
   font-weight: bold;
+  color: #1a173a;
 }
 input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+  box-sizing: border-box;
+  width: 275px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  outline: none;
+  transition: all 0.1s ease;
 }
-button {
+input:hover{
+  border-color: #5D52CE;
+}
+input:focus{
+  border-color: #5D52CE;
+}
+#submit_btn {
+  box-sizing: border-box;
   margin-top: 20px;
-  padding: 10px;
+  width: 275px;
+  padding: 15px;
   background-color:#5D52CE;
   color: white;
   border: none;
@@ -47,8 +76,19 @@ button {
   transition: background-color 0.3s ease;
 }
 
-span{
-    margin-top: 10px;
-    font-size: 12px;
-    color: #5D52CE;
+#submit_btn:hover{
+  background-color: #38327d;
+  font-weight: 600;
+}
+
+#forgot_pwd{
+  font-size: 12px;
+  margin-top: 5px;
+  align-self: flex-end;
+  color: #38327d;
+}
+
+#forgot_pwd:hover{
+  cursor: pointer;
+  color: #1a173a;
 }
