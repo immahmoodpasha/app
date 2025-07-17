@@ -1,0 +1,20 @@
+#dashboard{
+
+}
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#logo{
+    padding: 30px;
+}
+#navbar{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    align-items: center;
+}
+#profile{
+    padding: 30px;
+}
