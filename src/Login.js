@@ -1,7 +1,7 @@
 import './Login.css';
 function Login() {
   return (
-    <div className='main'>
+    <div id='loginPage'>
       <div id='login_cont'>
         <div id='welcome_back'>Welcome Back</div>
         <div id='input_form'>

@@ -3,15 +3,10 @@
   font-family: "Lexend";
 }
 
-body{
-    margin:0;
-    padding:0;
-    background-color:#EEEDFF; 
-    overflow: hidden;
-    
-}
-.main{
+#loginPage{
   height: 100vh;
+  background-color:#EEEDFF; 
+  overflow: hidden;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -43,11 +38,11 @@ body{
   flex-direction: column;
   gap: 5px;
 }
-label {
+#username label,#password label {
   font-weight: bold;
   color: #1a173a;
 }
-input {
+#username input,#password input {
   box-sizing: border-box;
   width: 275px;
   border: 2px solid #ccc;
@@ -56,10 +51,10 @@ input {
   outline: none;
   transition: all 0.1s ease;
 }
-input:hover{
+#username input:hover,#password input:hover{
   border-color: #5D52CE;
 }
-input:focus{
+#username input:hover,#password input:focus{
   border-color: #5D52CE;
 }
 #submit_btn {
