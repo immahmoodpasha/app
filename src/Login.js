@@ -1,13 +1,28 @@
+import { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import apiClient from './apiClient/axiosObject';
 
 function Login() {
+  const [usernameValue, setUsernameValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
+
   const navigate=useNavigate();
     const handleSubmit=(e)=>{
       e.preventDefault();
       navigate("/Inventory")
-  
+      apiClient.post('Users',
+        JSON.stringify(
+          {
+          'username': usernameValue,
+          'password': passwordValue
+          }
+        )
+        
+      )
     }
+  
+  
   return (
     <div id='loginPage'>
       <div id='login_cont'>
@@ -15,11 +30,11 @@ function Login() {
         <div id='input_form'>
           <div id='username'>
             <label>Email</label>
-            <input name="email" type="email" placeholder='Enter your email'/>
+            <input name="email" type="email" placeholder='Enter your email' value={usernameValue} onChange={(e)=>setUsernameValue(e.target.value)}/>
           </div>
           <div id='password'>
             <label>Password</label>
-            <input name="password" type="password" placeholder='Enter your password'/>
+            <input name="password" type="password" placeholder='Enter your password' value={passwordValue} onChange={(e)=>setPasswordValue(e.target.value)}/>
           </div>
         </div>
         <button id='submit_btn' onClick={handleSubmit}>Submit</button>
