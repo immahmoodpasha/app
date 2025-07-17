@@ -18,6 +18,48 @@
       "id": "54f0",
       "username": "pasha",
       "password": "123"
+    },
+    {
+      "id": "6705",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "6a78",
+      "username": "",
+      "password": ""
     }
-  ]
+  ],
+  "CategoryDistribution": {
+    "totalCategories": 5,
+    "totalItems": 850,
+    "lastUpdated": "10:30 AM",
+    "categories": [
+      {
+        "name": "Fruits and Vegetables",
+        "items": 220,
+        "isNew": false
+      },
+      {
+        "name": "Dairy, Bakery and Eggs",
+        "items": 180,
+        "isNew": false
+      },
+      {
+        "name": "Snacks",
+        "items": 160,
+        "isNew": false
+      },
+      {
+        "name": "Meat and Fish",
+        "items": 190,
+        "isNew": false
+      },
+      {
+        "name": "Baby Care",
+        "items": 60,
+        "isNew": true
+      }
+    ]
+  }
 }

@@ -2,8 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './Inventory.css';
 import apiClient from './apiClient/axiosObject.js';
-
-
+  
 function Inventory() {
   const [data, setData] = useState([]);
 

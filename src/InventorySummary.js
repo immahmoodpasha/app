@@ -19,6 +19,8 @@ function InventorySummary() {
         const inStockNum = Number(data.inStock)
         const totalItemsNum = Number(data.totalItems)
 
+       
+
     return (
     <div className='Inventory-Summary-Card'>
         <div className='card-header'>
@@ -38,7 +40,7 @@ function InventorySummary() {
         </div>
         <div className='progress-bar'>
                 <div className="status-row">
-                    <span>In Stock</span>
+                    <span id='stock-label'>In Stock</span>
                     <div id='In-Stock'>
                         <span>{inStock}</span>
                     </div>
@@ -52,7 +54,7 @@ function InventorySummary() {
 
         <div className='progress-bar'>
                 <div className="status-row">
-                <span>Low Stock</span>
+                <span id='stock-label'>Low Stock</span>
                 <div id='low-Stock'>
                     <span>{lowStock}</span>
                 </div>
@@ -68,7 +70,7 @@ function InventorySummary() {
 
         <div className='progress-bar'>
                 <div className="status-row">
-                <span>Out of Stock</span>
+                <span id='stock-label'>Out of Stock</span>
                 <div id='out-Stock'>
                     <span>{outOfStock}</span>
                 </div>
