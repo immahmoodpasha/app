@@ -54,7 +54,7 @@
 #username input:hover,#password input:hover{
   border-color: #5D52CE;
 }
-#username input:hover,#password input:focus{
+#username input:focus,#password input:focus{
   border-color: #5D52CE;
 }
 #submit_btn {
