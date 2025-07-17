@@ -11,6 +11,11 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar{
+    display: none;
 }
 #Heading1{
     text-align: left;
@@ -32,20 +37,20 @@
     margin-top: 5px;
 }
 
-.Total-Items{
+.total-Items-in-Categories{
     display: flex;
     align-items: center;
     gap: 10px;
     margin: 2%;
     width: 100%;
 }
-#perchange{
+#New-Categories-added{
     background-color: rgb(177, 245, 177);
     border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     opacity: 70%;
     font-size: 0.8rem;
 }
@@ -76,7 +81,7 @@
 
 
 }
-#In-Stock{
+#veggies-and-fruits{
     margin-left: auto;
 }
 
@@ -143,6 +148,6 @@
     margin-top: 3.5%;
 }
 
-#stock-label{
-    font-size: 1rem;
+#category-label{
+    font-size: 0.95rem;
 }

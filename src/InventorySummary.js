@@ -46,8 +46,7 @@ function InventorySummary() {
                     </div>
                 </div>
                 <div id='bar-cont-green'>
-                        <div id='bar-green' style={{ width: `${inStockNum/totalItemsNum * 100}%` }}>
-                        </div>
+                        <div id='bar-green' style={{ width: `${inStockNum/totalItemsNum * 100}%` }}></div>
                 </div>
         </div>
         
@@ -60,8 +59,7 @@ function InventorySummary() {
                 </div>
             </div>
             <div id='bar-cont-orange'>
-                    <div id='bar-orange' style={{ width: `${lowStock/totalItemsNum * 100}%` }}>
-                    </div>
+                    <div id='bar-orange' style={{ width: `${lowStock/totalItemsNum * 100}%` }}></div>
             </div>
 
         </div>
@@ -76,8 +74,7 @@ function InventorySummary() {
                 </div>
             </div>
             <div id='bar-cont-red'>
-                    <div id='bar-red' style={{ width: `${outOfStock/totalItemsNum * 100}%` }}>
-                    </div>
+                    <div id='bar-red' style={{ width: `${outOfStock/totalItemsNum * 100}%` }}></div>
             </div>
 
         </div>

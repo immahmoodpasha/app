@@ -32,17 +32,19 @@
   ],
   "CategoryDistribution": {
     "totalCategories": 5,
-    "totalItems": 850,
-    "lastUpdated": "10:30 AM",
+    "totalItemsinCategories": 100,
+    "totalQuantityinCategories": 1000,
+    "lastUpdatedTime": "10:30 AM",
+    "RecentlyAddedCategories": 3,
     "categories": [
       {
         "name": "Fruits and Vegetables",
-        "items": 220,
+        "items": 808,
         "isNew": false
       },
       {
         "name": "Dairy, Bakery and Eggs",
-        "items": 180,
+        "items": 780,
         "isNew": false
       },
       {
@@ -52,7 +54,7 @@
       },
       {
         "name": "Meat and Fish",
-        "items": 190,
+        "items": 890,
         "isNew": false
       },
       {

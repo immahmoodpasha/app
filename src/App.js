@@ -4,6 +4,7 @@ import Login from './Login';
 import Inventory from './Inventory';
 import NewProduct from './NewProduct';
 import InventorySummary from './InventorySummary'
+import CategoryDistribution from './CategoryDistribution'
 import Dashboard from './Dashboard';
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/newproduct" element={<NewProduct />} />
           <Route path="/InventorySummary" element={<InventorySummary />} />
+          <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
         </Routes>
       </Router>
     </div>
