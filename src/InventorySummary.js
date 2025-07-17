@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import "./InventorySummary.css";
 function InventorySummary() {
-        const url = "http://localhost:3000/InventorySummary"
+        const url = "http://localhost:3113/InventorySummary"
 
         const [data, setData] = useState(null)
 
@@ -17,15 +17,16 @@ function InventorySummary() {
     return (
     <div class='Inventory-Summary-Card'>
         <div className='card-header'>
-            <h3 id='Heading'>Inventory Summary</h3>
+            <h3 id='Heading1'>Inventory Summary</h3>
             <hr id='header-line'></hr>
         </div>
         <div className='card-content'>
-            <h3 id='Heading'>Total Inventory Items</h3>
+            <h3 id='Heading2'>Total Inventory Items</h3>
             <div className='Total-Items'>
                 <h3 id='titems'>{totalItems}</h3>
-                <div className='percentchange'>
-                    <p id='perchange'>↑{changePercentage}% from last month</p>
+                <span><p id='perchange'>↑ {changePercentage}% from last month</p></span>
+                <div id='Inventory-summary-icon1'>
+                    <p>jerkin</p>
                 </div>
             </div>
         </div>
