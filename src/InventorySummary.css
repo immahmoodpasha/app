@@ -14,7 +14,7 @@
 }
 #Heading1{
     text-align: left;
-    margin-top: 10px;
+    margin: 2%;
     font-size: 1rem;
     font-weight: 700;
     opacity: 90%;
@@ -22,7 +22,7 @@
 
 #Heading2{
     text-align: left;
-    margin-top: 2%;
+    margin: 2%;
     font-size: 1rem;
     font-weight: 700;
     opacity: 90%;
@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 2%;
+    margin: 2%;
     width: 100%;
 }
 #perchange{
@@ -53,8 +53,90 @@
     font-size: 1.5rem;
 }
 
-#Inventory-summary-icon1{
+#icon1{
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: rgb(241, 235, 235);
+    padding: 5px;
+    border-radius: 50%;
+   
+}
+
+.updated-time{
+    margin: 2%;
+    font-size: 0.8rem;
+    opacity: 70%;
+}
+.status-row{
     display: flex;
-    align-items: center;
-    float: right;
+    margin: 2%;
+    margin-bottom: 4%;
+
+
+}
+#In-Stock{
+    margin-left: auto;
+}
+
+#low-Stock{
+    margin-left: auto;
+}
+
+#out-Stock{
+    margin-left: auto;
+}
+
+
+
+#bar-cont-green{
+    margin: 2%;
+    border-radius: 20px;
+    height: 0.4rem;
+    background-color: rgb(207, 248, 207);
+    opacity: 80%;
+    overflow: hidden;
+}
+
+#bar-cont-orange{
+    margin: 2%;
+    border-radius: 20px;
+    height: 0.4rem;
+    background-color: rgb(252, 241, 204);
+    opacity: 80%;
+    overflow: hidden;
+}
+
+#bar-cont-red{
+    margin: 2%;
+    border-radius: 20px;
+    height: 0.4rem;
+    background-color: rgb(254, 220, 215);
+    opacity: 80%;
+    overflow: hidden;
+}
+
+#bar-green{
+    background-color: rgb(41, 255, 41);
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+}
+
+#bar-orange{
+    background-color: rgb(250, 185, 54);
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+}
+
+#bar-red{
+    background-color: rgb(224, 68, 68);
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+}
+
+.progress-bar{
+    margin-bottom: 4%;
+    margin-top: 3.5%;
 }
