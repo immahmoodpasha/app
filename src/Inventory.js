@@ -31,11 +31,11 @@ function Inventory() {
 
 
   return (
-    <div>
+    <div className='main'>
       <table className='inventory_table'>
         <thead className='table_head'>
           <tr >
-            <th>Item Name</th>
+            <th>ItemName</th>
             <th>Category</th>
             <th>Quantity</th>
             <th>Unit Price</th>
