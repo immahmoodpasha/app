@@ -20,20 +20,26 @@ function Inventory() {
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3113/Products/${id}`)
-      .then(() => fetchData())
-      .catch(error => console.error('Error deleting item:', error));
-  };
+  apiClient.delete(`Products/${id}`)
+    .then(() => {
+      fetchData(); 
+    })
+    .catch(error => {
+      console.error('Error deleting item:', error);
+    });
+};
+
 
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
+      <table className='inventory_table'>
+        <thead className='table_head'>
+          <tr >
             <th>Item Name</th>
             <th>Category</th>
             <th>Quantity</th>
             <th>Unit Price</th>
+            <th>Threshold</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -46,6 +52,7 @@ function Inventory() {
                 <td>{item.category}</td>
                 <td>{item.quantity}</td>
                 <td>${item.unitPrice.toFixed(2)}</td>
+                <td>{item.threshold}</td>
                 <td>{item.status}</td>
                 <td>
                   <button>Edit</button>

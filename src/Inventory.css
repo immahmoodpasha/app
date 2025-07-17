@@ -1,0 +1,24 @@
+.inventory_table {
+  width: 100%;
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_head {
+  background-color:#6D61F2;
+  text-align: center;
+  padding: 20px;
+}
+th{
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
