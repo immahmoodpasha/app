@@ -4,12 +4,12 @@ import "./NewProduct.css";
 function NewProduct () {
   return (
     <div>
-        
+        <h2>ADD PRODUCT</h2>
         <form>
-            <h2>ADD PRODUCT</h2>
             <label htmlFor="pn">Product Name:</label>
             <input type="text" id="pn"/>
             <input type="" />
+            <button>ADD</button>
         </form>
     </div>
   )
