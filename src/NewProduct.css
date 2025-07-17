@@ -1,16 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+*{
+  font-family: "Lexend";
+}
+
 #addprod-page {
     display: flex;
     align-items: center;
     height: 100vh;
     background-color: #EEEDFF;
     justify-content: center;
+    overflow: hidden;
 }
 
 #addprod-cont {
     background-color: white;
     display: flex;
     width: 35%;
-    height: 80%;
     border-radius: 12px;
     flex-direction: column;
     align-items: center;
@@ -40,7 +45,7 @@ form#addprod-form {
 
 #prod-name input, #prod-img input, #categ input, #quant input, #un-pr input, #thres input {
     box-sizing: border-box;
-    width: 400px;
+    width: 500px;
     border: 2px solid #ccc;
     border-radius: 5px;
     padding: 15px;
@@ -60,6 +65,7 @@ form#addprod-form {
 
 #prod-name label, #prod-img label, #categ label, #quant label, #un-pr label, #thres label {
     font-weight: bolder;
+    color: #1a173a;
 }
 
 #btn-addprod {
