@@ -2,7 +2,12 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate=useNavigate();
+    const handleSubmit=(e)=>{
+      e.preventDefault();
+      navigate("/Inventory")
   
+    }
   return (
     <div id='loginPage'>
       <div id='login_cont'>

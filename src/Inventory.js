@@ -1,12 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import  './Inventory.css';
-// const navigate=useNavigate();
-//   const handleSubmit=(e)=>{
-//     e.preventDefault();
-//     navigate("/Inventory")
 
-//   }
 function Inventory() {
   const [data, setData] = useState([]);
 
