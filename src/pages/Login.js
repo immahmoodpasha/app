@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './Login.css';
+import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
-import apiClient from './apiClient/axiosObject';
+import apiClient from '../apiClient/axiosObject';
 
 function Login() {
   const [usernameValue, setUsernameValue] = useState('');

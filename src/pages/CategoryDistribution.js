@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./CategoryDistribution.css";
-import piecharticon from './assets/pie-chart-icon.png'
+import "../styles/CategoryDistribution.css";
+import piecharticon from '../assets/pie-chart-icon.png'
 
 
 

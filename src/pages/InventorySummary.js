@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import "./InventorySummary.css";
-import InnventoryIcon from './assets/inventory_icon.png'
+import "../styles/InventorySummary.css";
+import InnventoryIcon from '../assets/inventory_icon.png'
 
 function InventorySummary() {
         const url = "http://localhost:3113/InventorySummary"
