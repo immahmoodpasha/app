@@ -2,7 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
     padding: 20px;
+}
+.container{
+  max-height: 400px; 
+  overflow-y: auto;
+  width: 100%;
 }
 table {
   width: 80%;
@@ -11,22 +18,21 @@ table {
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
   border-radius: 5px;
-  overflow: hidden;
 }
-
 
 th, td {
   padding: 10px 12px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
-  text-align: center;
+  text-align:center;
 }
+
 
 th{
     color: white;
     padding:15px;
+    z-index: 1;
+    background-color:#6D61F2;
+    position: sticky;
+    top: 0;
 }
 
-thead {
-  background-color:#6D61F2;
-}
