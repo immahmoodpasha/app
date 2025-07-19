@@ -1,0 +1,21 @@
+*{
+    font-family:sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.inventory-trends-container{
+    display: inline-block;
+    width: 800px;
+    height: 900px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+#main-heading{
+    text-align: left;
+    margin: 2%;
+    font-size: 1rem;
+    font-weight: 700;
+    opacity: 90%;
+}

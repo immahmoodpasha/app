@@ -5,6 +5,7 @@ import Inventory from './pages/Inventory';
 import NewProduct from './pages/NewProduct';
 import InventorySummary from './pages/InventorySummary'
 import CategoryDistribution from './pages/CategoryDistribution';
+import InventoryTrends from './pages/InventoryTrends';
 import Dashboard from './pages/Dashboard';
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/newproduct" element={<NewProduct />} />
           <Route path="/InventorySummary" element={<InventorySummary />} />
           <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
+          <Route path="/InventoryTrends" element={<InventoryTrends />} />
         </Routes>
       </Router>
     </div>
