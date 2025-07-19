@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Login';
-import Inventory from './Inventory';
-import NewProduct from './NewProduct';
-import InventorySummary from './InventorySummary'
-import CategoryDistribution from './CategoryDistribution'
-import Dashboard from './Dashboard';
+import Login from './pages/Login';
+import Inventory from './pages/Inventory';
+import NewProduct from './pages/NewProduct';
+import InventorySummary from './pages/InventorySummary'
+import CategoryDistribution from './pages/CategoryDistribution';
+import Dashboard from './pages/Dashboard';
 import "./App.css";
 
 function App() {
