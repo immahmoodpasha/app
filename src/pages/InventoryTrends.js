@@ -87,6 +87,8 @@ function InventoryTrends() {
                  <Line type="monotone" dataKey="quantity" stroke="#6c5ce7" strokeWidth={2} fill="#a29bfe" />
                 </LineChart>
             </ResponsiveContainer>
+
+            
               <hr id="header-line"></hr>
             </div>
             <diV className="footer">
