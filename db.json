@@ -15,7 +15,7 @@
       "category": "Dairy",
       "quantity": 8,
       "unitPrice": 3.49,
-      "threshold": 7,
+      "threshold": 10,
       "isActive": false
     },
     {
@@ -23,7 +23,7 @@
       "itemName": "Carrots",
       "category": "Vegetables",
       "quantity": 50,
-      "unitPrice": 0.78,
+      "unitPrice": 0.79,
       "threshold": 15,
       "isActive": false
     },
@@ -33,14 +33,14 @@
       "category": "Vegetables",
       "quantity": 5,
       "unitPrice": 1.25,
-      "threshold": 1,
-      "isActive": true
+      "threshold": 8,
+      "isActive": false
     },
     {
       "id": "5",
       "itemName": "Apples",
       "category": "Fruits",
-      "quantity": 1,
+      "quantity": 30,
       "unitPrice": 0.99,
       "threshold": 20,
       "isActive": false
@@ -76,16 +76,16 @@
       "id": "9",
       "itemName": "Yogurt",
       "category": "Dairy",
-      "quantity": 12,
+      "quantity": 0,
       "unitPrice": 0.99,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "10",
       "itemName": "Tomatoes",
       "category": "Vegetables",
-      "quantity": 0,
+      "quantity": 20,
       "unitPrice": 1.19,
       "threshold": 15,
       "isActive": false
@@ -96,7 +96,7 @@
       "category": "Vegetables",
       "quantity": 6,
       "unitPrice": 1.39,
-      "threshold": 6,
+      "threshold": 5,
       "isActive": false
     },
     {
@@ -133,7 +133,7 @@
       "quantity": 3,
       "unitPrice": 3.99,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     }
   ],
   "InventorySummary": {
@@ -363,8 +363,8 @@
   "OverviewAnalytics": {
     "metrics": {
       "totalSales": {
-        "current": 10325678,
-        "previous": 8734562
+        "current": 78900,
+        "previous": 54562
       },
       "conversion": {
         "visitors": 51750,
@@ -373,10 +373,10 @@
         "lastYearConverted": 11750
       },
       "averageOrderValue": {
-        "totalRevenue": 10325678,
+        "totalRevenue": 1032878,
         "totalOrders": 1452,
-        "lastYearRevenue": 9734578,
-        "lastYearOrders": 1390
+        "lastYearRevenue": 397578,
+        "lastYearOrders": 130
       },
       "activeCustomers": {
         "current": 12847,
@@ -384,18 +384,18 @@
       }
     },
     "monthlyRevenue": [
-      { "month": "Jul", "revenue": "₹835000" },
-      { "month": "Aug", "revenue": "₹902500" },
-      { "month": "Sep", "revenue": "₹874200" },
-      { "month": "Oct", "revenue": "₹945600" },
-      { "month": "Nov", "revenue": "₹998000" },
-      { "month": "Dec", "revenue": "₹1023000" },
-      { "month": "Jan", "revenue": "₹1095000" },
-      { "month": "Feb", "revenue": "₹1042500" },
-      { "month": "Mar", "revenue": "₹1137500" },
-      { "month": "Apr", "revenue": "₹1170000" },
-      { "month": "May", "revenue": "₹1195000" },
-      { "month": "Jun", "revenue": "₹1210000" }
+      { "month": "Jul", "revenue": 835000 },
+      { "month": "Aug", "revenue": 902500 },
+      { "month": "Sep", "revenue": 874200 },
+      { "month": "Oct", "revenue": 945600 },
+      { "month": "Nov", "revenue": 998000 },
+      { "month": "Dec", "revenue": 1023000 },
+      { "month": "Jan", "revenue": 1095000 },
+      { "month": "Feb", "revenue": 1042500 },
+      { "month": "Mar", "revenue": 1137500 },
+      { "month": "Apr", "revenue": 1170000 },
+      { "month": "May", "revenue": 1195000 },
+      { "month": "Jun", "revenue": 1210000 }
     ],
     "orders": {
       "total": 2847,
