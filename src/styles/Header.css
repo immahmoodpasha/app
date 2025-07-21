@@ -1,0 +1,78 @@
+input#search {
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding: 7px 16px;
+    background-color: transparent;
+    flex: 1;
+}
+
+div#search-cont {
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #5D52CE;
+    border-radius: 25px;
+    width: 60%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    right: 5%;
+    margin-left: auto;
+    transition: all 0.5s ease;
+}
+
+div#search-cont:focus-within {
+    width: 65%;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px 3px rgba(93, 82, 206, 0.5);
+}
+
+#search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+button#logout-manager, button#msg-manager, button#lnk-manager {
+    box-sizing: border-box;
+    border-radius: 100px;
+    border: none;
+    zoom:0.06;
+    background-color: white;
+}
+
+button#logout-manager:hover, button#msg-manager:hover, button#lnk-manager:hover {
+    box-shadow: 0 0 200px 10px rgba(93, 82, 206, 0.5);
+}
+
+button#logout-manager:hover {
+    border: 1px solid;
+}
+img#logo {
+    zoom: 0.06;
+}
+
+div#head-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid;
+
+}
+
+div#logo-cont, div#profileIcon-cont, div#search-cont, div#btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    
+}
+
+
+

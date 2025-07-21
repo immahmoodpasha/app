@@ -4,10 +4,10 @@
       "id": "1",
       "itemName": "Milk",
       "category": "Dairy",
-      "quantity": 28,
-      "unitPrice": 1.96,
-      "threshold": 25,
-      "isActive": true
+      "quantity": 25,
+      "unitPrice": 1.99,
+      "threshold": 50,
+      "isActive": false
     },
     {
       "id": "2",
@@ -43,7 +43,7 @@
       "quantity": 1,
       "unitPrice": 0.99,
       "threshold": 20,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "6",
@@ -51,7 +51,7 @@
       "category": "Fruits",
       "quantity": 12,
       "unitPrice": 0.59,
-      "threshold": 15,
+      "threshold": 10,
       "isActive": false
     },
     {
@@ -106,7 +106,7 @@
       "quantity": 7,
       "unitPrice": 2.79,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "13",
@@ -124,7 +124,7 @@
       "quantity": 9,
       "unitPrice": 1.09,
       "threshold": 6,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "15",
@@ -186,32 +186,27 @@
       "password": ""
     },
     {
-      "id": "b080",
+      "id": "59a9",
       "username": "",
       "password": ""
     },
     {
-      "id": "0c6e",
+      "id": "44e0",
+      "username": "koushik",
+      "password": "1234567890"
+    },
+    {
+      "id": "a2ca",
+      "username": "pasha",
+      "password": "123"
+    },
+    {
+      "id": "c957",
       "username": "",
       "password": ""
     },
     {
-      "id": "ff96",
-      "username": "",
-      "password": ""
-    },
-    {
-      "id": "962d",
-      "username": "",
-      "password": ""
-    },
-    {
-      "id": "ce34",
-      "username": "",
-      "password": ""
-    },
-    {
-      "id": "ae13",
+      "id": "0c8b",
       "username": "",
       "password": ""
     }
@@ -249,5 +244,120 @@
         "isNew": true
       }
     ]
-  }
+  },
+  "inventoryTrends": {
+    "mostOrdered": {
+      "item": "Tomatoes",
+      "quantity": "124 kg"
+    },
+    "leastOrdered": {
+      "item": "Specialty Cheese",
+      "quantity": "8 kg"
+    },
+    "fastestMoving": {
+      "item": "Chicken Breast",
+      "days": 3.2
+    },
+    "highestProfit": {
+      "item": "Specialty Herbs",
+      "margin": "82%"
+    },
+    "monthlyData": [
+      {
+        "month": "Jan",
+        "quantityLevel": 500,
+        "inStock": 170,
+        "outOfStock": 100
+      },
+      {
+        "month": "Feb",
+        "quantityLevel": 490,
+        "inStock": 89,
+        "outOfStock": 10
+      },
+      {
+        "month": "Mar",
+        "quantityLevel": 510,
+        "inStock": 110,
+        "outOfStock": 80
+      },
+      {
+        "month": "Apr",
+        "quantityLevel": 670,
+        "inStock": 358,
+        "outOfStock": 260
+      },
+      {
+        "month": "May",
+        "quantityLevel": 590,
+        "inStock": 230,
+        "outOfStock": 140
+      },
+      {
+        "month": "Jun",
+        "quantityLevel": 700,
+        "inStock": 498,
+        "outOfStock": 130
+      },
+      {
+        "month": "Jul",
+        "quantityLevel": 580,
+        "inStock": 200,
+        "outOfStock": 180
+      },
+      {
+        "month": "Aug",
+        "quantityLevel": 450,
+        "inStock": 250,
+        "outOfStock": 130
+      },
+      {
+        "month": "Sep",
+        "quantityLevel": 510,
+        "inStock": 210,
+        "outOfStock": 60
+      },
+      {
+        "month": "Oct",
+        "quantityLevel": 560,
+        "inStock": 297,
+        "outOfStock": 50
+      },
+      {
+        "month": "Nov",
+        "quantityLevel": 430,
+        "inStock": 230,
+        "outOfStock": 130
+      },
+      {
+        "month": "Dec",
+        "quantityLevel": 610,
+        "inStock": 210,
+        "outOfStock": 180
+      }
+    ],
+    "lastUpdated": "2 hours ago"
+  },
+  "CategoryRevenue": [
+    {
+      "name": "Fruits and Vegetables",
+      "value": 20
+    },
+    {
+      "name": "Dairy, Bakery and Eggs",
+      "value": 15
+    },
+    {
+      "name": "Snacks",
+      "value": 10
+    },
+    {
+      "name": "Meat and Fish",
+      "value": 25
+    },
+    {
+      "name": "Baby Care",
+      "value": 30
+    }
+  ]
 }

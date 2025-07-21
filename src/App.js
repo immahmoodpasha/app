@@ -7,6 +7,8 @@ import InventorySummary from './pages/InventorySummary'
 import CategoryDistribution from './pages/CategoryDistribution';
 import InventoryTrends from './pages/InventoryTrends';
 import Dashboard from './pages/Dashboard';
+import CategoryRevenue from './pages/CategoryRevenue';
+import Header from './pages/Header';
 import "./App.css";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/InventorySummary" element={<InventorySummary />} />
           <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
           <Route path="/InventoryTrends" element={<InventoryTrends />} />
+          <Route path="/CategoryRevenue" element={<CategoryRevenue />} />
+          <Route path="/Header" element={<Header />} />
         </Routes>
       </Router>
     </div>
