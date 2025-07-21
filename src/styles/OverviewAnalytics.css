@@ -1,0 +1,68 @@
+body{
+    background-color: #f1f1f1;
+}
+.Main-Container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+}
+.oa-header-card{
+    border: 0.5px solid rgb(170, 170, 170);
+    width: 22%;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.oa-header-content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#img1{
+    background-color: rgb(225, 224, 220);
+    border-radius: 50%;
+    padding: 3%;
+    margin-right: 0.7rem;
+}
+#card-main-text{
+    font-size: 1rem;
+    opacity: 70%;
+    font-weight: 300;
+}
+.card-main-value-div{
+    margin-top: 3%;
+    margin-left: 1.5%;
+}
+#card-main-value-text{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.card-percentage{
+    display: flex;
+    align-items: center;
+    margin-left: 1.5%;
+    margin-top: 3%;
+}
+.card-percent-backgroud{
+    display: flex;
+    align-items: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
+    gap: 10%;
+}
+#card-percentage-text{
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 500;
+}
+#last-year{
+    font-size: 0.7rem;
+    margin-left: 2%;
+}
