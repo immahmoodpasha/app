@@ -1,5 +1,141 @@
 {
-  "Products": [],
+  "Products": [
+    {
+      "id": "1",
+      "itemName": "Milk",
+      "category": "Dairy",
+      "quantity": 28,
+      "unitPrice": 1.99,
+      "threshold": 10,
+      "isActive": false
+    },
+    {
+      "id": "2",
+      "itemName": "Cheese",
+      "category": "Dairy",
+      "quantity": 8,
+      "unitPrice": 3.49,
+      "threshold": 10,
+      "isActive": false
+    },
+    {
+      "id": "3",
+      "itemName": "Carrots",
+      "category": "Vegetables",
+      "quantity": 50,
+      "unitPrice": 0.79,
+      "threshold": 15,
+      "isActive": false
+    },
+    {
+      "id": "4",
+      "itemName": "Broccoli",
+      "category": "Vegetables",
+      "quantity": 0,
+      "unitPrice": 1.25,
+      "threshold": 8,
+      "isActive": false
+    },
+    {
+      "id": "5",
+      "itemName": "Apples",
+      "category": "Fruits",
+      "quantity": 30,
+      "unitPrice": 0.99,
+      "threshold": 20,
+      "isActive": true
+    },
+    {
+      "id": "6",
+      "itemName": "Bananas",
+      "category": "Fruits",
+      "quantity": 12,
+      "unitPrice": 0.59,
+      "threshold": 10,
+      "isActive": true
+    },
+    {
+      "id": "7",
+      "itemName": "Orange Juice",
+      "category": "Beverages",
+      "quantity": 10,
+      "unitPrice": 2.99,
+      "threshold": 10,
+      "isActive": false
+    },
+    {
+      "id": "8",
+      "itemName": "Bread",
+      "category": "Bakery",
+      "quantity": 18,
+      "unitPrice": 1.49,
+      "threshold": 10,
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "itemName": "Yogurt",
+      "category": "Dairy",
+      "quantity": 0,
+      "unitPrice": 0.99,
+      "threshold": 10,
+      "isActive": false
+    },
+    {
+      "id": "10",
+      "itemName": "Tomatoes",
+      "category": "Vegetables",
+      "quantity": 20,
+      "unitPrice": 1.19,
+      "threshold": 15,
+      "isActive": true
+    },
+    {
+      "id": "11",
+      "itemName": "Spinach",
+      "category": "Vegetables",
+      "quantity": 6,
+      "unitPrice": 1.39,
+      "threshold": 5,
+      "isActive": false
+    },
+    {
+      "id": "12",
+      "itemName": "Butter",
+      "category": "Dairy",
+      "quantity": 7,
+      "unitPrice": 2.79,
+      "threshold": 10,
+      "isActive": true
+    },
+    {
+      "id": "13",
+      "itemName": "Eggs",
+      "category": "Dairy",
+      "quantity": 15,
+      "unitPrice": 2.49,
+      "threshold": 12,
+      "isActive": true
+    },
+    {
+      "id": "14",
+      "itemName": "Lettuce",
+      "category": "Vegetables",
+      "quantity": 9,
+      "unitPrice": 1.09,
+      "threshold": 6,
+      "isActive": true
+    },
+    {
+      "id": "15",
+      "itemName": "Strawberries",
+      "category": "Fruits",
+      "quantity": 3,
+      "unitPrice": 3.99,
+      "threshold": 10,
+      "isActive": false
+    }
+  ],
   "InventorySummary": {
     "totalItems": 610,
     "changePercentage": 4.2,

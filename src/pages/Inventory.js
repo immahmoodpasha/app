@@ -87,7 +87,7 @@ function Inventory() {
                         onChange={(e) =>
                           setEditableItem({
                             ...editableItem,
-                            quantity: e.target.value,
+                            quantity:Number(e.target.value),
                           })
                         }
                       />
@@ -99,7 +99,7 @@ function Inventory() {
                         onChange={(e) =>
                           setEditableItem({
                             ...editableItem,
-                            unitPrice: e.target.value,
+                            unitPrice: Number(e.target.value),
                           })
                         }
                       />
@@ -111,7 +111,7 @@ function Inventory() {
                         onChange={(e) =>
                           setEditableItem({
                             ...editableItem,
-                            threshold: e.target.value,
+                            threshold: Number(e.target.value),
                           })
                         }
                       />
