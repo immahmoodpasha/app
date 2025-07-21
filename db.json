@@ -4,9 +4,9 @@
       "id": "1",
       "itemName": "Milk",
       "category": "Dairy",
-      "quantity": 28,
+      "quantity": 25,
       "unitPrice": 1.99,
-      "threshold": 10,
+      "threshold": 50,
       "isActive": false
     },
     {
@@ -31,7 +31,7 @@
       "id": "4",
       "itemName": "Broccoli",
       "category": "Vegetables",
-      "quantity": 0,
+      "quantity": 5,
       "unitPrice": 1.25,
       "threshold": 8,
       "isActive": false
@@ -43,7 +43,7 @@
       "quantity": 30,
       "unitPrice": 0.99,
       "threshold": 20,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "6",
@@ -52,7 +52,7 @@
       "quantity": 12,
       "unitPrice": 0.59,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "7",
@@ -70,7 +70,7 @@
       "quantity": 18,
       "unitPrice": 1.49,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "9",
@@ -88,7 +88,7 @@
       "quantity": 20,
       "unitPrice": 1.19,
       "threshold": 15,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "11",
@@ -106,7 +106,7 @@
       "quantity": 7,
       "unitPrice": 2.79,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "13",
@@ -115,7 +115,7 @@
       "quantity": 15,
       "unitPrice": 2.49,
       "threshold": 12,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "14",
@@ -124,7 +124,7 @@
       "quantity": 9,
       "unitPrice": 1.09,
       "threshold": 6,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "15",
@@ -184,6 +184,31 @@
       "id": "906a",
       "username": "",
       "password": ""
+    },
+    {
+      "id": "59a9",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "44e0",
+      "username": "koushik",
+      "password": "1234567890"
+    },
+    {
+      "id": "a2ca",
+      "username": "pasha",
+      "password": "123"
+    },
+    {
+      "id": "c957",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "0c8b",
+      "username": "",
+      "password": ""
     }
   ],
   "CategoryDistribution": {
@@ -219,5 +244,105 @@
         "isNew": true
       }
     ]
-  }
+  },
+  "inventoryTrends": {
+    "mostOrdered": {
+      "item": "Tomatoes",
+      "quantity": "124 kg"
+    },
+    "leastOrdered": {
+      "item": "Specialty Cheese",
+      "quantity": "8 kg"
+    },
+    "fastestMoving": {
+      "item": "Chicken Breast",
+      "days": 3.2
+    },
+    "highestProfit": {
+      "item": "Specialty Herbs",
+      "margin": "82%"
+    },
+    "monthlyData": [
+    {
+      "month": "Jan",
+      "quantityLevel": 500,
+      "inStock": 170,
+      "outOfStock": 100
+    },
+    {
+      "month": "Feb",
+      "quantityLevel": 490,
+      "inStock": 89,
+      "outOfStock": 10
+    },
+    {
+      "month": "Mar",
+      "quantityLevel": 510,
+      "inStock": 110,
+      "outOfStock": 80
+    },
+    {
+      "month": "Apr",
+      "quantityLevel": 670,
+      "inStock": 358,
+      "outOfStock": 260
+    },
+    {
+      "month": "May",
+      "quantityLevel": 590,
+      "inStock": 230,
+      "outOfStock": 140
+    },
+    {
+      "month": "Jun",
+      "quantityLevel": 700,
+      "inStock": 498,
+      "outOfStock": 130
+    },
+    {
+      "month": "Jul",
+      "quantityLevel": 580,
+      "inStock": 200,
+      "outOfStock": 180
+    },
+    {
+      "month": "Aug",
+      "quantityLevel": 450,
+      "inStock": 250,
+      "outOfStock": 130
+    },
+    {
+      "month": "Sep",
+      "quantityLevel": 510,
+      "inStock": 210,
+      "outOfStock": 60
+    },
+    {
+      "month": "Oct",
+      "quantityLevel": 560,
+      "inStock": 297,
+      "outOfStock": 50
+    },
+    {
+      "month": "Nov",
+      "quantityLevel": 430,
+      "inStock": 230,
+      "outOfStock": 130
+    },
+    {
+      "month": "Dec",
+      "quantityLevel": 610,
+      "inStock": 210,
+      "outOfStock": 180
+    }
+  ],
+    "lastUpdated": "2 hours ago"
+  },
+  "CategoryRevenue": [
+    { "name": "Fruits and Vegetables", "value": 20 },
+    { "name": "Dairy, Bakery and Eggs", "value": 15 },
+    { "name": "Snacks", "value": 10 },
+    { "name": "Meat and Fish", "value": 25 },
+    { "name": "Baby Care", "value": 30 }
+  ]
 }

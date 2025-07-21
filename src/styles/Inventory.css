@@ -36,3 +36,7 @@ th{
     top: 0;
 }
 
+tr:hover {
+  background-color: #f1f1f1;
+}
+

@@ -79,16 +79,46 @@ function InventoryTrends() {
             </div>
             <div className="chart-container">
                 <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={data.monthlyData} margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip />
-                 <Line type="monotone" dataKey="quantity" stroke="#6c5ce7" strokeWidth={2} fill="#a29bfe" />
-                </LineChart>
-            </ResponsiveContainer>
+                    <ComposedChart data={data.monthlyData} margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip 
+                                formatter={(value, name) => {
+                                    switch(name) {
+                                    case "quantityLevel":
+                                        return [`${value} units`, "Total Quantity"];
+                                    case "inStock":
+                                        return [`${value} units`, "Stock In"];
+                                    case "outOfStock":
+                                        return [`${value} units`, "Stock Out"];
+                                    default:
+                                        return [value, name];
+                                    }
+                                }}
+                                contentStyle={{fontSize: '14px'}} 
+                        />
+                        <Legend 
+                                formatter={(value) => {
+                                    switch(value) {
+                                    case "quantityLevel":
+                                        return "Total Quantity";
+                                    case "inStock":
+                                        return "Stock In";
+                                    case "outOfStock":
+                                        return "Stock Out";
+                                    default:
+                                        return value;
+                                    }
+                                }} 
+                                wrapperStyle={{ fontSize: '14px'}}
 
-            
+                        />
+                        <Area type="monotone" dataKey="quantityLevel" fill="#a29bfe" stroke="#6c5ce7" fillOpacity={0.3} />
+                        <Bar dataKey="inStock" barSize={20} fill="#6c5ce7"/>
+                        <Line type="monotone" dataKey="outOfStock" stroke="#d68830ff" strokeWidth={2} />
+                    </ComposedChart>
+                </ResponsiveContainer>
               <hr id="header-line"></hr>
             </div>
             <diV className="footer">
