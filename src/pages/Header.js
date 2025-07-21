@@ -11,16 +11,18 @@ function Header() {
         <div id="head-cont">
             <div id="logo-cont">
                 <img id="logo" src={let_z} alt="Logo"/>
-                <h1 id="comp-name">Zepto</h1>
+                <h2 id="comp-name">Zepto</h2>
             </div>
             <div id="profileIcon-cont">
                 <div id="search-cont">
                     <FiSearch id="search-icon" />
                     <input id="search" placeholder="search"/>
                 </div>
-                <button id="msg-manager"><img src={msg} /></button>
-                <button id="lnk-manager"><img src={lnk} /></button>
-                <button id="logout-manager"><img src={exit} /></button>
+                <div id="btn-header">
+                    <button id="msg-manager"><img src={msg} /></button>
+                    <button id="lnk-manager"><img src={lnk} /></button>
+                    <button id="logout-manager"><img src={exit} /></button>
+                </div>
             </div>
         </div>
     );
