@@ -1,0 +1,132 @@
+*{
+    font-family:sans-serif;
+    margin: 0px;
+    padding: 0;
+}
+
+.inventory-trends-container{
+    display: inline-block;
+    width: max(800px, 500px);
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    margin: 20px;
+    overflow: scroll;
+}
+.inventory-trends-header{
+    display: flex;
+    align-items: center;
+}
+
+#main-heading{
+    margin: 2%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 90%;
+}
+
+#subheading{
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 80%;
+    padding-right: 1%;
+}
+
+.header-below{
+    display: flex;
+    align-items: center;
+    margin: 2%;
+}
+.arrowup{
+    background-color: rgb(217, 220, 238);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0.7%;
+}
+#most-ordered-item{
+    font-weight: 500;
+    opacity: 50%;
+    margin-bottom: 5%;
+}
+.below-text{
+    display: block;
+    margin-left: 1.8%;
+}
+.below-text-item{
+    display: flex;
+    gap: 0.5rem;
+}
+#most-ordered-item-name{
+    font-weight: 500;
+}
+#most-ordered-item-quantity{
+    font-weight: 500;
+}
+
+.arrowdown{
+     background-color: rgb(217, 220, 238);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0.7%;
+}
+.below-text-right{
+    display: block;
+    margin-left: 1.8%;
+}
+
+.header-below-below{
+    display: flex;
+    align-items: center;
+    margin: 2%;
+    margin-top: 5%;
+}
+.stopwatch{
+    background-color: rgb(217, 220, 238);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0.7%;
+    margin-left: 30%;
+}
+
+.pin{
+    background-color: rgb(217, 220, 238);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    padding: 0.7%;
+    margin-left: 25.3%;
+}
+
+.chart-container{
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+}
+
+#footer-heading{
+    margin: 2%;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 70%;
+}
+#footer-button{
+    margin-left: auto;
+    margin-right: 1%;
+    color: black;
+    border: 1px solid #6c5ce7;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: white;
+}
+
+#footer-button:hover{
+    background-color: #6c5ce7;
+    color: white;
+}
