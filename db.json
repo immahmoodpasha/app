@@ -5,9 +5,9 @@
       "itemName": "Milk",
       "category": "Dairy",
       "quantity": 28,
-      "unitPrice": 1.99,
-      "threshold": 10,
-      "isActive": false
+      "unitPrice": 1.96,
+      "threshold": 25,
+      "isActive": true
     },
     {
       "id": "2",
@@ -15,7 +15,7 @@
       "category": "Dairy",
       "quantity": 8,
       "unitPrice": 3.49,
-      "threshold": 10,
+      "threshold": 7,
       "isActive": false
     },
     {
@@ -23,7 +23,7 @@
       "itemName": "Carrots",
       "category": "Vegetables",
       "quantity": 50,
-      "unitPrice": 0.79,
+      "unitPrice": 0.78,
       "threshold": 15,
       "isActive": false
     },
@@ -31,16 +31,16 @@
       "id": "4",
       "itemName": "Broccoli",
       "category": "Vegetables",
-      "quantity": 0,
+      "quantity": 5,
       "unitPrice": 1.25,
-      "threshold": 8,
-      "isActive": false
+      "threshold": 1,
+      "isActive": true
     },
     {
       "id": "5",
       "itemName": "Apples",
       "category": "Fruits",
-      "quantity": 30,
+      "quantity": 1,
       "unitPrice": 0.99,
       "threshold": 20,
       "isActive": true
@@ -51,8 +51,8 @@
       "category": "Fruits",
       "quantity": 12,
       "unitPrice": 0.59,
-      "threshold": 10,
-      "isActive": true
+      "threshold": 15,
+      "isActive": false
     },
     {
       "id": "7",
@@ -70,25 +70,25 @@
       "quantity": 18,
       "unitPrice": 1.49,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "9",
       "itemName": "Yogurt",
       "category": "Dairy",
-      "quantity": 0,
+      "quantity": 12,
       "unitPrice": 0.99,
       "threshold": 10,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "10",
       "itemName": "Tomatoes",
       "category": "Vegetables",
-      "quantity": 20,
+      "quantity": 0,
       "unitPrice": 1.19,
       "threshold": 15,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "11",
@@ -96,7 +96,7 @@
       "category": "Vegetables",
       "quantity": 6,
       "unitPrice": 1.39,
-      "threshold": 5,
+      "threshold": 6,
       "isActive": false
     },
     {
@@ -115,7 +115,7 @@
       "quantity": 15,
       "unitPrice": 2.49,
       "threshold": 12,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "14",
@@ -133,7 +133,7 @@
       "quantity": 3,
       "unitPrice": 3.99,
       "threshold": 10,
-      "isActive": false
+      "isActive": true
     }
   ],
   "InventorySummary": {
@@ -182,6 +182,36 @@
     },
     {
       "id": "906a",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "b080",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "0c6e",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "ff96",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "962d",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "ce34",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "ae13",
       "username": "",
       "password": ""
     }
