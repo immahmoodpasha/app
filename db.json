@@ -263,86 +263,101 @@
       "margin": "82%"
     },
     "monthlyData": [
-    {
-      "month": "Jan",
-      "quantityLevel": 500,
-      "inStock": 170,
-      "outOfStock": 100
-    },
-    {
-      "month": "Feb",
-      "quantityLevel": 490,
-      "inStock": 89,
-      "outOfStock": 10
-    },
-    {
-      "month": "Mar",
-      "quantityLevel": 510,
-      "inStock": 110,
-      "outOfStock": 80
-    },
-    {
-      "month": "Apr",
-      "quantityLevel": 670,
-      "inStock": 358,
-      "outOfStock": 260
-    },
-    {
-      "month": "May",
-      "quantityLevel": 590,
-      "inStock": 230,
-      "outOfStock": 140
-    },
-    {
-      "month": "Jun",
-      "quantityLevel": 700,
-      "inStock": 498,
-      "outOfStock": 130
-    },
-    {
-      "month": "Jul",
-      "quantityLevel": 580,
-      "inStock": 200,
-      "outOfStock": 180
-    },
-    {
-      "month": "Aug",
-      "quantityLevel": 450,
-      "inStock": 250,
-      "outOfStock": 130
-    },
-    {
-      "month": "Sep",
-      "quantityLevel": 510,
-      "inStock": 210,
-      "outOfStock": 60
-    },
-    {
-      "month": "Oct",
-      "quantityLevel": 560,
-      "inStock": 297,
-      "outOfStock": 50
-    },
-    {
-      "month": "Nov",
-      "quantityLevel": 430,
-      "inStock": 230,
-      "outOfStock": 130
-    },
-    {
-      "month": "Dec",
-      "quantityLevel": 610,
-      "inStock": 210,
-      "outOfStock": 180
-    }
-  ],
+      {
+        "month": "Jan",
+        "quantityLevel": 500,
+        "inStock": 170,
+        "outOfStock": 100
+      },
+      {
+        "month": "Feb",
+        "quantityLevel": 490,
+        "inStock": 89,
+        "outOfStock": 10
+      },
+      {
+        "month": "Mar",
+        "quantityLevel": 510,
+        "inStock": 110,
+        "outOfStock": 80
+      },
+      {
+        "month": "Apr",
+        "quantityLevel": 670,
+        "inStock": 358,
+        "outOfStock": 260
+      },
+      {
+        "month": "May",
+        "quantityLevel": 590,
+        "inStock": 230,
+        "outOfStock": 140
+      },
+      {
+        "month": "Jun",
+        "quantityLevel": 700,
+        "inStock": 498,
+        "outOfStock": 130
+      },
+      {
+        "month": "Jul",
+        "quantityLevel": 580,
+        "inStock": 200,
+        "outOfStock": 180
+      },
+      {
+        "month": "Aug",
+        "quantityLevel": 450,
+        "inStock": 250,
+        "outOfStock": 130
+      },
+      {
+        "month": "Sep",
+        "quantityLevel": 510,
+        "inStock": 210,
+        "outOfStock": 60
+      },
+      {
+        "month": "Oct",
+        "quantityLevel": 560,
+        "inStock": 297,
+        "outOfStock": 50
+      },
+      {
+        "month": "Nov",
+        "quantityLevel": 430,
+        "inStock": 230,
+        "outOfStock": 130
+      },
+      {
+        "month": "Dec",
+        "quantityLevel": 610,
+        "inStock": 210,
+        "outOfStock": 180
+      }
+    ],
     "lastUpdated": "2 hours ago"
   },
   "CategoryRevenue": [
-    { "name": "Fruits and Vegetables", "value": 20 },
-    { "name": "Dairy, Bakery and Eggs", "value": 15 },
-    { "name": "Snacks", "value": 10 },
-    { "name": "Meat and Fish", "value": 25 },
-    { "name": "Baby Care", "value": 30 }
+    {
+      "name": "Fruits and Vegetables",
+      "value": 20
+    },
+    {
+      "name": "Dairy, Bakery and Eggs",
+      "value": 15
+    },
+    {
+      "name": "Snacks",
+      "value": 10
+    },
+    {
+      "name": "Meat and Fish",
+      "value": 25
+    },
+    {
+      "name": "Baby Care",
+      "value": 30
+    }
   ]
 }
