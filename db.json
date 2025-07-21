@@ -359,5 +359,77 @@
       "name": "Baby Care",
       "value": 30
     }
-  ]
+  ],
+  "OverviewAnalytics": {
+    "metrics": {
+      "totalSales": {
+        "current": 10325678,
+        "previous": 8734562
+      },
+      "conversion": {
+        "visitors": 51750,
+        "converted": 12847,
+        "lastYearVisitors": 49000,
+        "lastYearConverted": 11750
+      },
+      "averageOrderValue": {
+        "totalRevenue": 10325678,
+        "totalOrders": 1452,
+        "lastYearRevenue": 9734578,
+        "lastYearOrders": 1390
+      },
+      "activeCustomers": {
+        "current": 12847,
+        "previous": 11140
+      }
+    },
+    "monthlyRevenue": [
+      { "month": "Jul", "revenue": "₹835000" },
+      { "month": "Aug", "revenue": "₹902500" },
+      { "month": "Sep", "revenue": "₹874200" },
+      { "month": "Oct", "revenue": "₹945600" },
+      { "month": "Nov", "revenue": "₹998000" },
+      { "month": "Dec", "revenue": "₹1023000" },
+      { "month": "Jan", "revenue": "₹1095000" },
+      { "month": "Feb", "revenue": "₹1042500" },
+      { "month": "Mar", "revenue": "₹1137500" },
+      { "month": "Apr", "revenue": "₹1170000" },
+      { "month": "May", "revenue": "₹1195000" },
+      { "month": "Jun", "revenue": "₹1210000" }
+    ],
+    "orders": {
+      "total": 2847,
+      "status": {
+        "pending": 482,
+        "completed": 2156,
+        "canceled": 209
+      }
+    },
+    "customers": {
+      "current": 1827,
+      "returning": 580,
+      "previous": {
+        "total": 1650,
+        "returning": 620
+      }
+    },
+    "acquisition": {
+      "organic": {
+        "current": 4280,
+        "previous": 3950
+      },
+      "paid": {
+        "current": 2840,
+        "previous": 2900
+      },
+      "social": {
+        "current": 1650,
+        "previous": 1560
+      },
+      "direct": {
+        "current": 1230,
+        "previous": 1215
+      }
+    }
+  }
 }

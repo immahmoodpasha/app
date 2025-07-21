@@ -9,6 +9,7 @@ import InventoryTrends from './pages/InventoryTrends';
 import Dashboard from './pages/Dashboard';
 import CategoryRevenue from './pages/CategoryRevenue';
 import Header from './pages/Header';
+import OverviewAnalytics from './pages/OverviewAnalytics';
 import "./App.css";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/InventoryTrends" element={<InventoryTrends />} />
           <Route path="/CategoryRevenue" element={<CategoryRevenue />} />
           <Route path="/Header" element={<Header />} />
+          <Route path="/OverviewAnalytics" element={<OverviewAnalytics />} />
         </Routes>
       </Router>
     </div>
