@@ -25,17 +25,20 @@ const Dashboard = () => {
                 {selectedOption==='Inv' && (
                     <div id="tab-content">
                         <div id="inventoryGraphics">
-                            <div id="categoryDistribution">
-                                <CategoryDistribution />
+                            <div id="inventory">
+                                <Inventory />
                             </div>
                             <div id="inventorySummary">
                                 <InventorySummary />
                             </div>
                         </div>
-                        
-                        <div id="inventory">
-                            <Inventory />
+                        <div id="categoryDistribution">
+                            <CategoryDistribution />
                         </div>
+                        
+                        
+                        
+                        
                         <div id="categoryRevenue">
                             <CategoryRevenue />
                         </div>

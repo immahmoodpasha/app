@@ -233,7 +233,16 @@ function Inventory() {
   return (
     <div className="main">
       <div className="container">
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <div id="invHeader">
+            <div id="left">
+                <div id="invTitle">Inventory Items</div>
+            </div>
+            <div id="right">
+                <div id="search"><GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /></div>
+                <div id="addNewItem">Add Item</div>
+            </div>
+        </div>
+        <hr></hr>
         <table className="inventory_table" {...getTableProps()}>
           <thead className="table_head">
             {headerGroups.map((headerGroup) => (
