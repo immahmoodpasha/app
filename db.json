@@ -4,7 +4,7 @@
       "id": "1",
       "itemName": "Milk",
       "category": "Dairy",
-      "quantity": 25,
+      "quantity": 5,
       "unitPrice": 1.99,
       "threshold": 50,
       "isActive": false
@@ -16,16 +16,16 @@
       "quantity": 8,
       "unitPrice": 3.49,
       "threshold": 10,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "3",
       "itemName": "Carrots",
       "category": "Vegetables",
-      "quantity": 50,
+      "quantity": 0,
       "unitPrice": 0.79,
       "threshold": 15,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "4",
@@ -43,7 +43,7 @@
       "quantity": 30,
       "unitPrice": 0.99,
       "threshold": 20,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "6",
@@ -76,7 +76,7 @@
       "id": "9",
       "itemName": "Yogurt",
       "category": "Dairy",
-      "quantity": 0,
+      "quantity": 5,
       "unitPrice": 0.99,
       "threshold": 10,
       "isActive": false
@@ -103,7 +103,7 @@
       "id": "12",
       "itemName": "Butter",
       "category": "Dairy",
-      "quantity": 7,
+      "quantity": 0,
       "unitPrice": 2.79,
       "threshold": 10,
       "isActive": false
@@ -207,6 +207,11 @@
     },
     {
       "id": "0c8b",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "5467",
       "username": "",
       "password": ""
     }
@@ -341,23 +346,28 @@
   "CategoryRevenue": [
     {
       "name": "Fruits and Vegetables",
-      "value": 20
+      "value": 20,
+      "id": "be9d"
     },
     {
       "name": "Dairy, Bakery and Eggs",
-      "value": 15
+      "value": 15,
+      "id": "2458"
     },
     {
       "name": "Snacks",
-      "value": 10
+      "value": 10,
+      "id": "cb9d"
     },
     {
       "name": "Meat and Fish",
-      "value": 25
+      "value": 25,
+      "id": "1dc9"
     },
     {
       "name": "Baby Care",
-      "value": 30
+      "value": 30,
+      "id": "ab43"
     }
   ],
   "OverviewAnalytics": {
@@ -384,18 +394,54 @@
       }
     },
     "monthlyRevenue": [
-      { "month": "Jul", "revenue": 835000 },
-      { "month": "Aug", "revenue": 902500 },
-      { "month": "Sep", "revenue": 874200 },
-      { "month": "Oct", "revenue": 945600 },
-      { "month": "Nov", "revenue": 998000 },
-      { "month": "Dec", "revenue": 1023000 },
-      { "month": "Jan", "revenue": 1095000 },
-      { "month": "Feb", "revenue": 1042500 },
-      { "month": "Mar", "revenue": 1137500 },
-      { "month": "Apr", "revenue": 1170000 },
-      { "month": "May", "revenue": 1195000 },
-      { "month": "Jun", "revenue": 1210000 }
+      {
+        "month": "Jul",
+        "revenue": 835000
+      },
+      {
+        "month": "Aug",
+        "revenue": 902500
+      },
+      {
+        "month": "Sep",
+        "revenue": 874200
+      },
+      {
+        "month": "Oct",
+        "revenue": 945600
+      },
+      {
+        "month": "Nov",
+        "revenue": 998000
+      },
+      {
+        "month": "Dec",
+        "revenue": 1023000
+      },
+      {
+        "month": "Jan",
+        "revenue": 1095000
+      },
+      {
+        "month": "Feb",
+        "revenue": 1042500
+      },
+      {
+        "month": "Mar",
+        "revenue": 1137500
+      },
+      {
+        "month": "Apr",
+        "revenue": 1170000
+      },
+      {
+        "month": "May",
+        "revenue": 1195000
+      },
+      {
+        "month": "Jun",
+        "revenue": 1210000
+      }
     ],
     "orders": {
       "total": 2847,

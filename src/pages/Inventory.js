@@ -40,72 +40,55 @@ function Inventory() {
     fetchData();
   }, []);
 
-  const toggleActive = async (rawId) => {
-  try {
-    const id = String(rawId); // Ensure string type
+  const { handleEdit, handleSave, toggleActive } = useMemo(() => {
+    const handleEdit = (id) => {
+      const item = data.find((item) => item.id === id);
+      if (item) {
+        setEditingRowId(id);
+        setEditableItem({ ...item });
+      }
+    };
 
-    const item = data.find((i) => String(i.id) === id);
+    const handleSave = async () => {
+      try {
+        await apiClient.patch(`Products/${editingRowId}`, editableItem);
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.id === editingRowId ? { ...item, ...editableItem } : item
+          )
+        );
+        setEditingRowId(null);
+      } catch (error) {
+        console.error("Error saving item:", error);
+      }
+    };
 
-    if (!item) {
-      console.warn("Item not found in data. ID:", id);
-      return;
-    }
+    const toggleActive = async (id) => {
+      const item = data.find((item) => item.id === id);
+      if (!item) return;
+      const updatedItem = { ...item, isActive: !item.isActive };
+      try {
+        await apiClient.patch(`Products/${id}`, updatedItem);
+        setData((prevData) =>
+          prevData.map((i) => (i.id === id ? updatedItem : i))
+        );
+      } catch (error) {
+        console.error("Error updating item:", error);
+      }
+    };
 
-    const updatedItem = { isActive: !item.isActive };
-
-    await apiClient.patch(`Products/${id}`, updatedItem);
-
-    setData((prevData) =>
-      prevData.map((i) =>
-        String(i.id) === id ? { ...i, ...updatedItem } : i
-      )
-    );
-  } catch (error) {
-    console.error("Error updating item:", error);
-  }
-};
-
-
-
-  const handleEdit = (id) => {
-    const item = data.find((item) => item.id === id);
-    setEditingRowId(id);
-    setEditableItem({ ...item });
-  };
-
-  const handleSave = async () => {
-    try {
-      await apiClient.patch(`Products/${editingRowId}`, editableItem);
-      setData((prevData) =>
-        prevData.map((item) =>
-          item.id === editingRowId ? { ...item, ...editableItem } : item
-        )
-      );
-
-      setEditingRowId(null);
-      setEditableItem({});
-    } catch (error) {
-      console.error("Error saving item:", error);
-    }
-  };
+    return { handleEdit, handleSave, toggleActive };
+  }, [data, editableItem, editingRowId]);
 
   const columns = useMemo(
     () => [
       {
         Header: "Item Name",
         accessor: "itemName",
-        Cell: ({ row }) =>
-          row.original.id === editingRowId
-            ? editableItem.itemName || row.original.itemName
-            : row.original.itemName,
       },
       {
         Header: "Category",
         accessor: "category",
-        Cell: ({ row }) =>
-          row.original.id === editingRowId
-            ? editableItem.category || row.original.category
-            : row.original.category,
       },
       {
         Header: "Quantity",
@@ -114,16 +97,12 @@ function Inventory() {
           row.original.id === editingRowId ? (
             <input
               type="number"
-              value={
-                editableItem.quantity !== undefined
-                  ? editableItem.quantity
-                  : row.original.quantity
-              }
+              value={editableItem.quantity ?? ""}
               onChange={(e) =>
-                setEditableItem((prev) => ({
-                  ...prev,
+                setEditableItem({
+                  ...editableItem,
                   quantity: Number(e.target.value),
-                }))
+                })
               }
             />
           ) : (
@@ -137,16 +116,12 @@ function Inventory() {
           row.original.id === editingRowId ? (
             <input
               type="number"
-              value={
-                editableItem.unitPrice !== undefined
-                  ? editableItem.unitPrice
-                  : row.original.unitPrice
-              }
+              value={editableItem.unitPrice ?? ""}
               onChange={(e) =>
-                setEditableItem((prev) => ({
-                  ...prev,
+                setEditableItem({
+                  ...editableItem,
                   unitPrice: Number(e.target.value),
-                }))
+                })
               }
             />
           ) : (
@@ -160,16 +135,12 @@ function Inventory() {
           row.original.id === editingRowId ? (
             <input
               type="number"
-              value={
-                editableItem.threshold !== undefined
-                  ? editableItem.threshold
-                  : row.original.threshold
-              }
+              value={editableItem.threshold ?? ""}
               onChange={(e) =>
-                setEditableItem((prev) => ({
-                  ...prev,
+                setEditableItem({
+                  ...editableItem,
                   threshold: Number(e.target.value),
-                }))
+                })
               }
             />
           ) : (
@@ -180,75 +151,62 @@ function Inventory() {
         Header: "Status",
         accessor: "status",
         Cell: ({ row }) => {
-          const quantity =
-            row.original.id === editingRowId
-              ? editableItem.quantity ?? row.original.quantity
-              : row.original.quantity;
-          const threshold =
-            row.original.id === editingRowId
-              ? editableItem.threshold ?? row.original.threshold
-              : row.original.threshold;
-
           let status = "";
-          let colour = "";
-
-          if (quantity === 0) {
+          let color = "";
+          if (row.original.quantity === 0) {
             status = "Out of Stock";
-            colour = "red";
-          } else if (quantity < threshold) {
+            color = "red";
+          } else if (row.original.quantity < row.original.threshold) {
             status = "Low Stock";
-            colour = "orange";
+            color = "orange";
           } else {
             status = "In Stock";
-            colour = "green";
+            color = "green";
           }
-
-          return <span style={{ color: colour }}>{status}</span>;
+          return <span style={{ color }}>{status}</span>;
         },
       },
       {
-  Header: "Actions",
-  accessor: "actions",
-  disableSortBy: true,
-  Cell: ({ row }) => {
-    const current = data.find((item) => item.id === row.original.id);
-
-    return row.original.id === editingRowId ? (
-      <>
-        <button
-          onClick={handleSave}
-          style={{ background: "none", border: "none" }}
-        >
-          <RiArrowUpCircleLine size={25} />
-        </button>
-      </>
-    ) : (
-      <>
-        <button
-          onClick={() => handleEdit(row.original.id)}
-          style={{ background: "none", border: "none" }}
-        >
-          <AiFillEdit size={25} />
-        </button>
-
-        {/* ✅ Checkbox for active/inactive */}
-        <span
-          style={{ cursor: "pointer", marginLeft: "8px" }}
-          onClick={() => toggleActive(row.original.id)}
-        >
-          {row.original.isActive ? (
-            <FaCheckSquare size={20} color="green" title="Active" />
+        Header: "Actions",
+        accessor: "actions",
+        disableSortBy: true,
+        Cell: ({ row }) => {
+          const { id, isActive } = row.original;
+          return row.original.id === editingRowId ? (
+            <>
+              <button
+                onClick={handleSave}
+                style={{ background: "none", border: "none" }}
+              >
+                <RiArrowUpCircleLine size={25} />
+              </button>
+              <button
+                onClick={() => toggleActive(id)}
+                style={{ background: "none", border: "none" }}
+              >
+                {isActive ? <FaCheckSquare size={25} /> : <FaRegSquare size={25} />}
+              </button>
+            </>
           ) : (
-            <FaRegSquare size={20} color="gray" title="Inactive" />
-          )}
-        </span>
-      </>
-    );
-  },
-}
-,
+            <>
+              <button
+                onClick={() => handleEdit(id)}
+                style={{ background: "none", border: "none" }}
+              >
+                <AiFillEdit size={25} />
+              </button>
+              <button
+                onClick={() => toggleActive(id)}
+                style={{ background: "none", border: "none" }}
+              >
+                {isActive ? <FaCheckSquare size={25} /> : <FaRegSquare size={25} />}
+              </button>
+            </>
+          );
+        },
+      },
     ],
-    [editingRowId, editableItem]
+    [editingRowId, editableItem, handleEdit, handleSave, toggleActive]
   );
 
   const {
@@ -263,7 +221,12 @@ function Inventory() {
     canPreviousPage,
     state,
     setGlobalFilter,
-  } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination);
+  } = useTable(
+    { columns, data },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
 
   const { globalFilter } = state;
 
@@ -276,15 +239,34 @@ function Inventory() {
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <th {...column.getHeaderProps()}>
+
                     {column.render("Header")}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
+
+                    <span id="sort-table">
+
+                      <span id="asce" onClick={() => column.toggleSortBy(false, false)}>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+
+                          <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+
+                        </svg>
+
+                      </span>
+
+                      <span id="desc" onClick={() => column.toggleSortBy(true,false)}>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+
+                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+
+                        </svg>
+
+                      </span>
+
                     </span>
+
                   </th>
                 ))}
               </tr>
@@ -295,27 +277,19 @@ function Inventory() {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    const cellProps = cell.getCellProps();
-                    const { key, ...rest } = cellProps;
-                    return (
-                      <td key={key} {...rest}>
-                        {cell.render("Cell")}
-                      </td>
-                    );
-                  })}
+                  {row.cells.map((cell) => (
+                    <td key={cell.column.id} {...cell.getCellProps()}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
                 </tr>
               );
             })}
           </tbody>
-
           <tfoot>
             <tr>
               <td colSpan={columns.length}>
-                <button
-                  onClick={() => previousPage()}
-                  disabled={!canPreviousPage}
-                >
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
                   Previous
                 </button>
                 <button onClick={() => nextPage()} disabled={!canNextPage}>
