@@ -1,4 +1,6 @@
-
+*{
+    font-family:sans-serif;
+}
 .Main-Container{
     display: flex;
     align-items: center;

@@ -1,3 +1,6 @@
+*{
+    font-family:sans-serif;
+}
 input#search {
     border: none;
     outline: none;
