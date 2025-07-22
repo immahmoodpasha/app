@@ -3,7 +3,11 @@ import cash from '../assets/cash.png';
 import percent from '../assets/percent.png';
 import money from '../assets/money.png';
 import customer from '../assets/group.png';
+import cart from '../assets/trolley.png';
 import '../styles/OverviewAnalytics.css';
+import clock from '../assets/wall-clock.png';
+import checkmark from '../assets/check-mark.png';
+import cancel from '../assets/remove.png';
 import { AreaChart,Line, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, defs, linearGradient, LabelList} from 'recharts';
 
 
@@ -147,6 +151,36 @@ function OverviewAnalytics() {
                             
                         </AreaChart>
                     </ResponsiveContainer>
+                </div>
+                <div className='graphh-footer'>
+                    <div className='graphh-footer-box'>
+                        <div>
+                            <h1 id='graph-footer-header'>Total Orders</h1>
+                            <h1 id='total-orders'>{data.orders.total.toLocaleString()}</h1>
+                        </div>
+                        <img src={cart} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                    </div>
+                    <div className='graphh-footer-box'>
+                        <div>
+                            <h1 id='graph-footer-header'>Pending</h1>
+                            <h1 id='total-orders'>{data.orders.status.pending}</h1>
+                        </div>
+                        <img src={clock} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                    </div>
+                    <div className='graphh-footer-box'>
+                        <div>
+                            <h1 id='graph-footer-header'>Completed</h1>
+                            <h1 id='total-orders'>{data.orders.status.completed}</h1>
+                        </div>
+                        <img src={checkmark} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                    </div>
+                    <div className='graphh-footer-box'>
+                        <div>
+                            <h1 id='graph-footer-header'>Cancelled</h1>
+                            <h1 id='total-orders'>{data.orders.status.canceled}</h1>
+                        </div>
+                        <img src={cancel} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                    </div>
                 </div>
         </div>
         </>
