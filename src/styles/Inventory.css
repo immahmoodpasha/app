@@ -17,11 +17,16 @@
 #invTitle{
   font-weight: 700;
 }
-#right{
+#invHeader #right{
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
+}
+#search input{
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid black;
 }
 #addNewItem{
   background-color: blueviolet;

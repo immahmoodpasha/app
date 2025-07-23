@@ -24,27 +24,25 @@ const Dashboard = () => {
             <div id="content">
                 {selectedOption==='Inv' && (
                     <div id="tab-content">
-                        <div id="inventoryGraphics">
+                        <div id="left">
                             <div id="inventory">
                                 <Inventory />
                             </div>
+                            <div id="inventoryTrends">
+                                <InventoryTrends />
+                            </div>
+                        </div>
+                        
+                        <div id="right">
                             <div id="inventorySummary">
                                 <InventorySummary />
                             </div>
+                            <div id="categoryDistribution">
+                                <CategoryDistribution />
+                            </div>
                         </div>
-                        <div id="categoryDistribution">
-                            <CategoryDistribution />
-                        </div>
+                       
                         
-                        
-                        
-                        
-                        <div id="categoryRevenue">
-                            <CategoryRevenue />
-                        </div>
-                        <div id="inventoryTrends">
-                            <InventoryTrends />
-                        </div>
                     </div>
                     
                 )}
@@ -53,7 +51,6 @@ const Dashboard = () => {
                         <div id="overviewAnalytics">
                             <OverviewAnalytics />
                         </div>
-                        
                     </div>
                     
                 )}

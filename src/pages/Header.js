@@ -13,11 +13,8 @@ function Header() {
                 <img id="logo" src={let_z} alt="Logo"/>
                 <h2 id="comp-name">Zepto</h2>
             </div>
+            
             <div id="profileIcon-cont">
-                <div id="search-cont">
-                    <FiSearch id="search-icon" />
-                    <input id="search" placeholder="search"/>
-                </div>
                 <div id="btn-header">
                     <button id="msg-manager"><img src={msg} /></button>
                     <button id="lnk-manager"><img src={lnk} /></button>
