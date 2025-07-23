@@ -1,7 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import "../styles/Inventory.css";
 import apiClient from "../apiClient/axiosObject.js";
-import { FaCheckSquare, FaRegSquare } from "react-icons/fa";
+import { FaCheckSquare, FaRegSquare, FaSearch } from "react-icons/fa";
+import { FiEdit2 } from "react-icons/fi";
 import { AiFillEdit } from "react-icons/ai";
 import { RiArrowUpCircleLine } from "react-icons/ri";
 import {
@@ -182,22 +183,32 @@ function Inventory() {
               </button>
               <button
                 onClick={() => toggleActive(id)}
-                style={{ background: "none", border: "none" }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "blueviolet",
+                }}
               >
-                {isActive ? <FaCheckSquare size={25} /> : <FaRegSquare size={25} />}
+                {isActive ? (
+                  <FaCheckSquare size={24} style={{ color: "blueviolet" }} />
+                ) : (
+                  <FaRegSquare size={24} style={{ color: "blueviolet" }} />
+                )}
               </button>
+
             </>
           ) : (
             <>
               <button
                 onClick={() => handleEdit(id)}
-                style={{ background: "none", border: "none" }}
+                style={{ background: "none", border: "none", marginRight: 10 }}
               >
-                <AiFillEdit size={25} />
+                <FiEdit2 size={22} style={{ color: "blueviolet" }} />
               </button>
               <button
                 onClick={() => toggleActive(id)}
-                style={{ background: "none", border: "none" }}
+                style={{ background: "none", border: "none", color:'blueviolet'}}
               >
                 {isActive ? <FaCheckSquare size={25} /> : <FaRegSquare size={25} />}
               </button>
@@ -238,8 +249,11 @@ function Inventory() {
                 <div id="invTitle">Inventory Items</div>
             </div>
             <div id="right">
+              <div id="search-cont">
+                <FaSearch id="search-icon"/> 
                 <div id="search"><GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /></div>
-                <div id="addNewItem">Add Item</div>
+              </div>
+              <div id="addNewItem">Add Item</div>
             </div>
         </div>
         <hr></hr>
@@ -249,33 +263,27 @@ function Inventory() {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps()}>
-
                     {column.render("Header")}
-
                     <span id="sort-table">
-
-                      <span id="asce" onClick={() => column.toggleSortBy(false, false)}>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
-
-                          <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
-
-                        </svg>
-
-                      </span>
-
-                      <span id="desc" onClick={() => column.toggleSortBy(true,false)}>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-
-                          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-
-                        </svg>
-
-                      </span>
-
+                      {!column.disableSortBy && (
+                        <>
+                          <span id="asce" onClick={() => column.toggleSortBy(false, false)}>
+                            {/* Ascending Arrow SVG */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              className="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+                            </svg>
+                          </span>
+                          <span id="desc" onClick={() => column.toggleSortBy(true, false)}>
+                            {/* Descending Arrow SVG */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              className="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                            </svg>
+                          </span>
+                        </>
+                      )}
                     </span>
-
                   </th>
                 ))}
               </tr>
@@ -297,16 +305,19 @@ function Inventory() {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan={columns.length}>
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                  Previous
-                </button>
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                  Next
-                </button>
+              <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                <div id="btn-ft">
+                  <button id="prev" onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    Previous
+                  </button>
+                  <button id="next" onClick={() => nextPage()} disabled={!canNextPage}>
+                    Next
+                  </button>
+                </div>
               </td>
             </tr>
           </tfoot>
+
         </table>
       </div>
     </div>

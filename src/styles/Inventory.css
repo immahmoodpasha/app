@@ -1,15 +1,23 @@
 *{
   font-family:sans-serif;
 }
-.main{
-    display: flex;
-    flex-direction: column;
+.main {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
-.container{
-  max-height: 400px;
-  overflow-y: scroll;
-  
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
 }
+
+
 #invHeader{
   display: flex;
   flex-direction: row;
@@ -30,26 +38,60 @@
   border-radius: 8px;
   outline: none;
   border: 1px solid black;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  padding: 7px 16px;
+  background-color: transparent;
+  flex: 1;
 }
-#addNewItem{
+#addNewItem, #prev, #next {
   background-color: blueviolet;
   color: white;
   font-weight: 600;
-  padding: 12px 6px;
-  border-radius: 20px;
+  padding: 12px 10px;
+  border-radius: 5px;
+}
+
+#btn-ft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#prev, #next {
+  background-color: blueviolet;
+  color: white;
+  width: 100px;
+  font-weight: 600;
+  padding: 12px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#prev:disabled, #next:disabled {
+  background-color: rgb(73, 2, 138);
 }
 
 hr{
   margin-bottom: 5px;
 }
 
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-radius: 5px;
+table.inventory_table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  box-sizing: border-box;
 }
+
+.inventory_table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 
 th, td {
   padding: 10px 12px;
@@ -72,3 +114,50 @@ tr:hover {
   background-color: #f1f1f1;
 }
 
+#left{
+    display: flex;
+    flex-direction: column;
+}
+#right{
+    display: flex;
+    flex-direction: column;
+}
+
+div#search-cont {
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #5D52CE;
+    border-radius: 10px;
+    width: 60%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    right: 5%;
+    margin-left: auto;
+    transition: all 0.5s ease;
+}
+
+div#search-cont:focus-within {
+    width: 65%;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px 3px rgba(93, 82, 206, 0.5);
+}
+
+#search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+span#sort-table {
+  margin-left: 8px;
+}
+
+span#asce, span#desc {
+  margin-right: 4px;
+}

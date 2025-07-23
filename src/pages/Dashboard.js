@@ -1,30 +1,41 @@
 import { useState } from "react";
 import '../styles/Dashboard.css';
 import Inventory from "./Inventory";
-import Header from "./Header";
 import InventorySummary from "./InventorySummary";
 import InventoryTrends from "./InventoryTrends";
 import CategoryDistribution from "./CategoryDistribution";
 import CategoryRevenue from "./CategoryRevenue";
 import OverviewAnalytics from "./OverviewAnalytics";
+import { FiSearch, FiMessageCircle, FiLink, FiLogOut } from 'react-icons/fi';
+import exit from "../assets/exit.png"
+import let_z from "../assets/letter-z.png"
+
 const Dashboard = () => {
     const [selectedOption, setSelectedOption] = useState('Inv');
-
-
     
     return(
         <div id="dashboard">
             <div id="header">
-            <Header />
-            </div>
-            <div id="navMenu">
-                <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')}>Inventory</div>
-                <div id="statisticsOption" onClick={()=>setSelectedOption('St')}>Statistics</div>
+                <div id="head-cont">
+                    <div id="logo-cont">
+                        <img id="logo" src={let_z} alt="Logo"/>
+                        <h2 id="comp-name">Zepto</h2>
+                    </div>
+                    <div id="profileIcon-cont">
+                        <div id="btn-header">
+                            <div id='navMenu'>
+                                <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')}>Inventory</div>
+                                <div id="statisticsOption" onClick={()=>setSelectedOption('St')}>Statistics</div>
+                            </div>
+                            <button id="logout-manager"><FiLogOut size={24} /></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="content">
                 {selectedOption==='Inv' && (
                     <div id="tab-content">
-                        <div id="left">
+                        <div id="left-dash">
                             <div id="inventory">
                                 <Inventory />
                             </div>
@@ -33,7 +44,7 @@ const Dashboard = () => {
                             </div>
                         </div>
                         
-                        <div id="right">
+                        <div id="right-dash">
                             <div id="inventorySummary">
                                 <InventorySummary />
                             </div>

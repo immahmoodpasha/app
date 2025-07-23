@@ -16,7 +16,7 @@
       "quantity": 8,
       "unitPrice": 3.49,
       "threshold": 10,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "quantity": 0,
       "unitPrice": 0.79,
       "threshold": 15,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "4",
@@ -43,7 +43,7 @@
       "quantity": 30,
       "unitPrice": 0.99,
       "threshold": 20,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "6",
@@ -88,7 +88,7 @@
       "quantity": 20,
       "unitPrice": 1.19,
       "threshold": 15,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "11",
@@ -115,7 +115,7 @@
       "quantity": 15,
       "unitPrice": 2.49,
       "threshold": 12,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "14",
