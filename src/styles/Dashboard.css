@@ -12,7 +12,7 @@
     flex-direction: row;
     gap: 100px;
     width: 100%;
-    margin-top: 10px;
+    margin: 10px 0px;
     justify-content: center;
 }
 #inventoryOption, #statisticsOption{
@@ -27,19 +27,28 @@
 #inventoryOption:hover, #statisticsOption:hover{
     background-color: rgb(101, 33, 165);
 }
-#tab-content{
+#content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     background-color: rgb(248, 247, 248);
+}
+#tab-content{
+    
     margin-top: 10px;
-    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#left{
     display: flex;
     flex-direction: column;
 }
-#inventoryGraphics{
+#right{
     display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
+    flex-direction: column;
 }
 #inventory,#categoryRevenue,#inventoryTrends{
     display: flex;
@@ -54,4 +63,8 @@
     height: fit-content;
     width: max-content;
     padding: 5px;
+}
+
+#overviewAnalytics{
+    width: 100%;
 }

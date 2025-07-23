@@ -121,13 +121,13 @@ function InventoryTrends() {
                 </ResponsiveContainer>
               <hr id="header-line"></hr>
             </div>
-            <diV className="footer">
+            <div className="footer">
                 <h2 id="footer-heading">Updated   {data.lastUpdated}</h2>
                 <button id="footer-button">
                     View Full Report
                 </button>
 
-            </diV>
+            </div>
           
         </div>
 
