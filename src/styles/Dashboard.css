@@ -76,13 +76,20 @@
     justify-content: center;
 }
 
-#inventory, #inventoryTrends {
+#inventory {
   background-color: white;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 20px;
+}
+
+#inventoryTrends{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0px;
 }
 
 

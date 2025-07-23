@@ -233,7 +233,9 @@ function Inventory() {
     state,
     setGlobalFilter,
   } = useTable(
-    { columns, data },
+    { columns, data, initialState: {
+      pageSize: 6,  
+    }, },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -256,7 +258,6 @@ function Inventory() {
               <div id="addNewItem">Add Item</div>
             </div>
         </div>
-        <hr></hr>
         <div className="table-container">
         <table className="inventory_table" {...getTableProps()}>
           <thead className="table_head">

@@ -80,10 +80,6 @@
   background-color: rgb(73, 2, 138);
 }
 
-.table-container{
-  margin: 1%;
-}
-
 table.inventory_table {
   width: 100%;
   border-collapse: collapse;
