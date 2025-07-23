@@ -108,8 +108,6 @@ function OverviewAnalytics() {
                 <div className='graphh'>
                     <ResponsiveContainer width="100%" height={400}>
                         <AreaChart data={data.monthlyRevenue} margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
-                            
-
                         <defs>
                             <linearGradient id="gradientStroke" x1="1  " y1="0" x2="0" y2="1">
                                 <stop offset="0%" stopColor="rgba(0, 26, 255, 1)" />
@@ -125,22 +123,22 @@ function OverviewAnalytics() {
                         </defs>
                             <XAxis dataKey="month" tick={{ fontSize: 10 }} axisLine={false}/>
                             <YAxis tick={{ fontSize: 10 }} axisLine={false}/>
-                            <Tooltip   itemStyle={{ color: '#1b3d82ff' }}
+                            <Tooltip   itemStyle={{color: '#002164ff' }}
                                        formatter={(value) => `₹${value.toLocaleString("en-IN")}`} 
-                                       labelStyle={{ color: '#c46767ff', fontWeight: 'bold' }}
+                                       labelStyle={{ color: '#000000ff', fontWeight:300 }}
                                        contentStyle={{
-                                       backgroundColor: '#ebebebff',
-                                       borderColor: '#000000ff',
+                                       backgroundColor: '#0037ff39',
+                                       border: 'none',
                                        borderRadius: '5px',
+                                       boxShadow: '0px 1px 0px 3px #16de0b38'
                                     }}
-                                       />
+                            />
                             <Line
                                         type="monotone"
-                                        dataKey="revenue" 
+                                        dataKey="revenue"                                                                                
                                         stroke="#4f46e5"
                                         strokeWidth={3}
-                                        dot={{ r: 5, fill: '#ffffffff', stroke: '#4f46e5', strokeWidth: 2 }} 
-                                        activeDot={{ r: 8, fill: '#4f46e5', stroke: '#ffffff', strokeWidth: 2 }}
+                                        dot={{ r: 5, fill: '#ffffffff', stroke: '#4f46e5', strokeWidth: 2 }}
                             />
                             <Area
                                 type="monotone"
@@ -148,7 +146,6 @@ function OverviewAnalytics() {
                                 stroke="url(#gradientStroke)"
                                 fill="url(#gradientStroke)"
                             />
-                            
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>

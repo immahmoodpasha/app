@@ -18,8 +18,8 @@ const Dashboard = () => {
             <div id="header">
                 <div id="head-cont">
                     <div id="logo-cont">
-                        <img id="logo" src={let_z} alt="Logo"/>
-                        <h2 id="comp-name">Zepto</h2>
+                        <img id="logo" src={let_z} alt="Logo" />
+                        <h2 id="comp-name">Rapidd</h2>
                     </div>
                     <div id="profileIcon-cont">
                         <div id="btn-header">
@@ -32,6 +32,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            <hr></hr>
             <div id="content">
                 {selectedOption==='Inv' && (
                     <div id="tab-content">

@@ -257,6 +257,7 @@ function Inventory() {
             </div>
         </div>
         <hr></hr>
+        <div className="table-container">
         <table className="inventory_table" {...getTableProps()}>
           <thead className="table_head">
             {headerGroups.map((headerGroup) => (
@@ -319,6 +320,7 @@ function Inventory() {
           </tfoot>
 
         </table>
+        </div>
       </div>
     </div>
   );

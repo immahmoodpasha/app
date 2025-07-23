@@ -3,14 +3,12 @@
 }
 .main {
   width: 100%;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
 .container {
   width: 100%;
-  box-sizing: border-box;
   padding: 0;
   background: none;
   box-shadow: none;
@@ -23,15 +21,15 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  margin: 1%;
 }
 #invTitle{
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 500;
 }
 #invHeader #right{
   display: flex;
   flex-direction: row;
-  gap: 10px;
   align-items: center;
 }
 #search input{
@@ -46,13 +44,20 @@
   flex: 1;
 }
 #addNewItem, #prev, #next {
-  background-color: blueviolet;
+  background-color: #8a2be2;
   color: white;
-  font-weight: 600;
-  padding: 12px 10px;
-  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  height: 30px;
+  border-radius: 3px;
 }
-
+#addNewItem:hover, #prev:hover, #next:hover {
+  background-color: #7a14da;
+}
 #btn-ft {
   display: flex;
   justify-content: center;
@@ -61,6 +66,7 @@
 }
 
 #prev, #next {
+  border: none;
   background-color: blueviolet;
   color: white;
   width: 100px;
@@ -74,8 +80,8 @@
   background-color: rgb(73, 2, 138);
 }
 
-hr{
-  margin-bottom: 5px;
+.table-container{
+  margin: 1%;
 }
 
 table.inventory_table {
@@ -83,7 +89,7 @@ table.inventory_table {
   border-collapse: collapse;
   border: 1px solid #ddd;
   overflow: hidden;
-  box-sizing: border-box;
+  margin-top: 1%;
 }
 
 .inventory_table thead th {
@@ -127,8 +133,9 @@ div#search-cont {
     box-sizing: border-box;
     position: relative;
     border: 1px solid #5D52CE;
-    border-radius: 10px;
-    width: 60%;
+    border-radius: 3px;
+    width: 45%;
+    height: 30px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -139,7 +146,7 @@ div#search-cont {
 }
 
 div#search-cont:focus-within {
-    width: 65%;
+    width: 55%;
     transition: all 0.5s ease;
     box-shadow: 0 0 5px 3px rgba(93, 82, 206, 0.5);
 }
@@ -147,7 +154,7 @@ div#search-cont:focus-within {
 #search-icon {
     position: absolute;
     top: 50%;
-    left: 15px;
+    left: 7%;
     transform: translateY(-50%);
     color: #666;
     font-size: 15px;
