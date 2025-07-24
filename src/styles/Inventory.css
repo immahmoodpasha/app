@@ -77,7 +77,8 @@
 }
 
 #prev:disabled, #next:disabled {
-  background-color: rgb(73, 2, 138);
+  background-color: rgb(142, 46, 232,0.4);
+  color: hsl(0, 0%, 0%, 0.5);
 }
 
 table.inventory_table {
