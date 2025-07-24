@@ -10,7 +10,7 @@ function Login() {
   const navigate=useNavigate();
     const handleSubmit=(e)=>{
       e.preventDefault();
-      navigate("/Inventory")
+      navigate("/Dashboard")
       apiClient.post('Users',
         JSON.stringify(
           {
