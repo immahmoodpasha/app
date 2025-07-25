@@ -19,6 +19,7 @@ function CategoryDistribution() {
 
     return(
         <div className='Inventory-Summary-Card'>
+            <div className='card-info'>
         <div className='card-header'>
             <h3 id='Heading1'>Category Distribution</h3>
             <hr id='header-line'></hr>
@@ -68,7 +69,7 @@ function CategoryDistribution() {
                 
             )
         })}
-        
+        </div>
         
     </div>
     )
