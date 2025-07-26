@@ -166,3 +166,10 @@ span#sort-table {
 span#asce, span#desc {
   margin-right: 4px;
 }
+.inputfield {
+  width: 35%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

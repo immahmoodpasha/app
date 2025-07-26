@@ -2,6 +2,7 @@
     font-family:sans-serif;
     margin: 0px;
     padding: 0;
+    
 }
 
 .inventory-trends-container{
@@ -11,6 +12,7 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     overflow: scroll;
+    background-color: white;
 }
 .inventory-trends-header{
     display: flex;

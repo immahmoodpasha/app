@@ -4,9 +4,9 @@
       "id": "1",
       "itemName": "Milk",
       "category": "Dairy",
-      "quantity": 5,
-      "unitPrice": 1.99,
-      "threshold": 50,
+      "quantity": 56,
+      "unitPrice": 1.96,
+      "threshold": 45,
       "isActive": false
     },
     {
@@ -16,7 +16,7 @@
       "quantity": 8,
       "unitPrice": 3.49,
       "threshold": 10,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "3",
@@ -25,16 +25,16 @@
       "quantity": 0,
       "unitPrice": 0.79,
       "threshold": 15,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "4",
       "itemName": "Broccoli",
       "category": "Vegetables",
-      "quantity": 5,
+      "quantity": 8,
       "unitPrice": 1.25,
       "threshold": 8,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@
       "quantity": 30,
       "unitPrice": 0.99,
       "threshold": 20,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "6",
@@ -79,7 +79,7 @@
       "quantity": 5,
       "unitPrice": 0.99,
       "threshold": 10,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "10",
@@ -88,7 +88,7 @@
       "quantity": 20,
       "unitPrice": 1.19,
       "threshold": 15,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "11",
@@ -96,7 +96,7 @@
       "category": "Vegetables",
       "quantity": 6,
       "unitPrice": 1.39,
-      "threshold": 5,
+      "threshold": 6,
       "isActive": false
     },
     {
@@ -115,7 +115,7 @@
       "quantity": 15,
       "unitPrice": 2.49,
       "threshold": 12,
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "14",
@@ -132,8 +132,8 @@
       "category": "Fruits",
       "quantity": 3,
       "unitPrice": 3.99,
-      "threshold": 10,
-      "isActive": false
+      "threshold": 11,
+      "isActive": true
     }
   ],
   "InventorySummary": {
@@ -217,6 +217,11 @@
     },
     {
       "id": "1b3b",
+      "username": "",
+      "password": ""
+    },
+    {
+      "id": "1373",
       "username": "",
       "password": ""
     }

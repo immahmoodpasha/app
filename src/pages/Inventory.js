@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import "../styles/Inventory.css";
 import apiClient from "../apiClient/axiosObject.js";
 import { FaCheckSquare, FaRegSquare, FaSearch } from "react-icons/fa";
@@ -23,10 +23,13 @@ function GlobalFilter({ filter, setFilter }) {
   );
 }
 
+
+
 function Inventory() {
   const [data, setData] = useState([]);
   const [editingRowId, setEditingRowId] = useState(null);
   const [editableItem, setEditableItem] = useState({});
+  const justStartedEditing = useRef(true);
 
   const fetchData = async () => {
     try {
@@ -45,6 +48,7 @@ function Inventory() {
     const handleEdit = (id) => {
       const item = data.find((item) => item.id === id);
       if (item) {
+        justStartedEditing.current = true;
         setEditingRowId(id);
         setEditableItem({ ...item });
       }
@@ -92,62 +96,66 @@ function Inventory() {
         accessor: "category",
       },
       {
-        Header: "Quantity",
-        accessor: "quantity",
-        Cell: ({ row }) =>
-          row.original.id === editingRowId ? (
-            <input
-              type="number"
-              value={editableItem.quantity ?? ""}
-              onChange={(e) =>
-                setEditableItem({
-                  ...editableItem,
-                  quantity: Number(e.target.value),
-                })
-              }
-            />
-          ) : (
-            row.original.quantity
-          ),
-      },
-      {
-        Header: "Unit Price",
-        accessor: "unitPrice",
-        Cell: ({ row }) =>
-          row.original.id === editingRowId ? (
-            <input
-              type="number"
-              value={editableItem.unitPrice ?? ""}
-              onChange={(e) =>
-                setEditableItem({
-                  ...editableItem,
-                  unitPrice: Number(e.target.value),
-                })
-              }
-            />
-          ) : (
-            `$${(row.original.unitPrice ?? 0).toFixed(2)}`
-          ),
-      },
-      {
-        Header: "Threshold",
-        accessor: "threshold",
-        Cell: ({ row }) =>
-          row.original.id === editingRowId ? (
-            <input
-              type="number"
-              value={editableItem.threshold ?? ""}
-              onChange={(e) =>
-                setEditableItem({
-                  ...editableItem,
-                  threshold: Number(e.target.value),
-                })
-              }
-            />
-          ) : (
-            row.original.threshold
-          ),
-      },
+  Header: "Quantity",
+  accessor: "quantity",
+  Cell: ({ row }) =>
+    row.original.id === editingRowId ? (
+      <input
+        className="inputfield"
+        type="number"
+        value={editableItem.quantity ?? ""}
+        onChange={(e) =>
+          setEditableItem((prev) => ({
+            ...prev,
+            quantity: Number(e.target.value),
+          }))
+        }
+      />
+    ) : (
+      row.original.quantity
+    ),
+},
+{
+  Header: "Unit Price",
+  accessor: "unitPrice",
+  Cell: ({ row }) =>
+    row.original.id === editingRowId ? (
+      <input
+        className="inputfield"
+        type="number"
+        value={editableItem.unitPrice ?? ""}
+        onChange={(e) =>
+          setEditableItem((prev) => ({
+            ...prev,
+            unitPrice: Number(e.target.value),
+          }))
+        }
+      />
+    ) : (
+      `$${(row.original.unitPrice ?? 0).toFixed(2)}`
+    ),
+},
+{
+  Header: "Threshold",
+  accessor: "threshold",
+  Cell: ({ row }) =>
+    row.original.id === editingRowId ? (
+      <input
+        className="inputfield"
+        type="number"
+        value={editableItem.threshold ?? ""}
+        onChange={(e) =>
+          setEditableItem((prev) => ({
+            ...prev,
+            threshold: Number(e.target.value),
+          }))
+        }
+      />
+    ) : (
+      row.original.threshold
+    ),
+},
+,
       {
         Header: "Status",
         accessor: "status",
@@ -196,7 +204,6 @@ function Inventory() {
                   <FaRegSquare size={24} style={{ color: "blueviolet" }} />
                 )}
               </button>
-
             </>
           ) : (
             <>
@@ -208,9 +215,17 @@ function Inventory() {
               </button>
               <button
                 onClick={() => toggleActive(id)}
-                style={{ background: "none", border: "none", color:'blueviolet'}}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "blueviolet",
+                }}
               >
-                {isActive ? <FaCheckSquare size={25} /> : <FaRegSquare size={25} />}
+                {isActive ? (
+                  <FaCheckSquare size={25} />
+                ) : (
+                  <FaRegSquare size={25} />
+                )}
               </button>
             </>
           );
@@ -233,9 +248,14 @@ function Inventory() {
     state,
     setGlobalFilter,
   } = useTable(
-    { columns, data, initialState: {
-      pageSize: 6,  
-    }, },
+    {
+      columns,
+      data,
+      autoResetPage: false,
+      initialState: {
+        pageSize: 6,
+      },
+    },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -247,72 +267,89 @@ function Inventory() {
     <div className="main">
       <div className="container">
         <div id="invHeader">
-            <div id="left">
-                <div id="invTitle">Inventory Items</div>
-            </div>
-            <div id="right">
-              <div id="search-cont">
-                <FaSearch id="search-icon"/> 
-                <div id="search"><GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /></div>
+          <div id="left">
+            <div id="invTitle">Inventory Items</div>
+          </div>
+          <div id="right">
+            <div id="search-cont">
+              <FaSearch id="search-icon" />
+              <div id="search">
+                <GlobalFilter
+                  filter={globalFilter}
+                  setFilter={setGlobalFilter}
+                />
               </div>
-              <div id="addNewItem">Add Item</div>
             </div>
+            <div id="addNewItem">Add Item</div>
+          </div>
         </div>
         <div className="table-container">
-        <table className="inventory_table" {...getTableProps()}>
-          <thead className="table_head">
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                    <span id="sort-table">
-  {!column.disableSortBy && (
-    <img
-      src="https://static.thenounproject.com/png/24967-200.png"
-      alt="Sort Icon"
-      width={16}
-      height={18}
-      onClick={() => column.toggleSortBy()}
-      style={{ cursor: 'pointer',border:"none"}}
-    />
-  )}
-</span>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="table_body" {...getTableBodyProps()}>
-            {page.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td key={cell.column.id} {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
+          <table className="inventory_table" {...getTableProps()}>
+            <thead className="table_head">
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps()}
+                      style={{ paddingLeft: "10px" }}
+                    >
+                      {column.render("Header")}
+                      {!column.disableSortBy && (
+                        <img
+                          src="https://static.thenounproject.com/png/24967-200.png"
+                          alt="Sort Icon"
+                          width={16}
+                          height={16}
+                          onClick={() => column.toggleSortBy()}
+                          style={{
+                            cursor: "pointer",
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      )}
+                    </th>
                   ))}
                 </tr>
-              );
-            })}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={columns.length} style={{ textAlign: "center" }}>
-                <div id="btn-ft">
-                  <button id="prev" onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    Previous
-                  </button>
-                  <button id="next" onClick={() => nextPage()} disabled={!canNextPage}>
-                    Next
-                  </button>
-                </div>
-              </td>
-            </tr>
-          </tfoot>
-
-        </table>
+              ))}
+            </thead>
+            <tbody className="table_body" {...getTableBodyProps()}>
+              {page.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => (
+                      <td key={cell.column.id} {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                  <div id="btn-ft">
+                    <button
+                      id="prev"
+                      onClick={() => previousPage()}
+                      disabled={!canPreviousPage}
+                    >
+                      Previous
+                    </button>
+                    <button
+                      id="next"
+                      onClick={() => nextPage()}
+                      disabled={!canNextPage}
+                    >
+                      Next
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>
