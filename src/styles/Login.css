@@ -31,16 +31,16 @@
   align-items: center;
   gap: 15px;
 }
-#username, #password{
+#email, #password{
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-#username label,#password label {
+#email label,#password label {
   font-weight: bold;
   color: #1a173a;
 }
-#username input,#password input {
+#email input,#password input {
   box-sizing: border-box;
   width: 275px;
   border: 2px solid #ccc;
@@ -49,10 +49,10 @@
   outline: none;
   transition: all 0.1s ease;
 }
-#username input:hover,#password input:hover{
+#email input:hover,#password input:hover{
   border-color: #5D52CE;
 }
-#username input:focus,#password input:focus{
+#email input:focus,#password input:focus{
   border-color: #5D52CE;
 }
 #submit_btn {
@@ -72,6 +72,19 @@
 #submit_btn:hover{
   background-color: #38327d;
   font-weight: 600;
+}
+
+#submit_btn_loading {
+  box-sizing: border-box;
+  margin-top: 20px;
+  width: 275px;
+  padding: 15px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #6a6a6a;
+  cursor: not-allowed;
 }
 
 #forgot_pwd{
