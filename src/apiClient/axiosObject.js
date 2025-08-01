@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND = process.env.BACKEND_URL || "http://localhost:3113/";
+const BACKEND = "http://localhost:5256/";
 
 const apiClient = axios.create({
     baseURL: BACKEND,

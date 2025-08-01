@@ -8,7 +8,7 @@ import CategoryRevenue from "./CategoryRevenue";
 import OverviewAnalytics from "./OverviewAnalytics";
 import { FiSearch, FiMessageCircle, FiLink, FiLogOut } from 'react-icons/fi';
 import exit from "../assets/exit.png"
-import let_z from "../assets/letter-z.png"
+import logo from "../assets/RapiddLogo.png"
 
 const Dashboard = () => {
     const [selectedOption, setSelectedOption] = useState('Inv');
@@ -17,10 +17,7 @@ const Dashboard = () => {
         <div id="dashboard">
             <div id="header">
                 <div id="head-cont">
-                    <div id="logo-cont">
-                        <img id="logo" src={let_z} alt="Logo" />
-                        <h2 id="comp-name">Rapidd</h2>
-                    </div>
+                    <img id="logo" src={logo} alt="Logo" width={'12%'} height={'3%'}/>
                     <div id="profileIcon-cont">
                         <div id="btn-header">
                             <div id='navMenu'>

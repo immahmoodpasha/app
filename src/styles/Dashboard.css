@@ -8,8 +8,27 @@
     flex-direction: column;
 }
 #header{
-    padding-bottom: 10px;
+    padding: 2% 0;
 }
+#head-cont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#logo{
+    margin-left: 5%;
+}
+
+#profileIcon-cont{
+    display: flex;
+    align-items: center;
+    margin-right: 2%;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20%;
+}
+
 #navMenu{
     display: flex;
     flex-direction: row;
@@ -17,12 +36,21 @@
     width: 100%;
     justify-content: center;
 }
+
+div#btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    
+}
+
 #inventoryOption, #statisticsOption{
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    background-color: blueviolet;
+    background-color: #8404ae;
     color: white;
     width: 100px;
     height: 40px;
@@ -30,9 +58,33 @@
     cursor: pointer;
     transition: all 0.2s ease;
 }
-#inventoryOption:hover, #statisticsOption:hover{
-    background-color: rgb(101, 33, 165);
+
+
+
+#logout-manager{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8404ae;
+    border-radius: 3px;
+    border: 1px solid;
+    height: 40px;
+    width: 80px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
 }
+
+#inventoryOption:hover, #statisticsOption:hover, #logout-manager:hover{
+    background-color: #5f037e;
+}
+
+
+
+
+
+
+
 #content {
   display: flex;
   justify-content: center;
@@ -106,49 +158,14 @@
     font-family:sans-serif;
 }
 
-div#profileIcon-cont {
-    width: 50%;
-    display: flex;
-}
+
 div#btn-header {
     margin-left:auto;
     margin-right: 2%;
-    margin-top: 1%;
-}
-
-button#logout-manager {
-    box-sizing: border-box;
-    border-radius: 3px;
-    border: 1px solid;
-    background-color: blueviolet;
-    height: 40px;
-    width: 80px;
-    cursor: pointer;
-    color: white;
-}
-
-button#logout-manager:hover, div#inventoryOption:hover, div#statisticsOption:hover {
-    box-shadow: 0 0 200px 15px rgba(93, 82, 206, 0.5);
 }
 
 img#logo {
     zoom: 0.06;
 }
 
-div#head-cont {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-}
-
-div#logo-cont, div#profileIcon-cont, div#search-cont, div#btn-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    
-}
-#logo-cont{
-    margin-left: 1%;
-}

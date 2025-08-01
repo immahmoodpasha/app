@@ -44,7 +44,7 @@
   flex: 1;
 }
 #addNewItem, #prev, #next {
-  background-color: #8a2be2;
+  background-color: #8404ae;
   color: white;
   cursor: pointer;
   font-weight: 500;

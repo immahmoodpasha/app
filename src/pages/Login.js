@@ -8,10 +8,9 @@ function Login() {
   const [passwordValue, setPasswordValue] = useState('');
 
   const navigate=useNavigate();
-    const handleSubmit=(e)=>{
+    const handleSubmit= async (e)=>{
       e.preventDefault();
-      navigate("/Dashboard")
-      apiClient.post('Users',
+      const response = await apiClient.post("api/Auth/Login",
         JSON.stringify(
           {
           'username': usernameValue,
@@ -20,6 +19,7 @@ function Login() {
         )
         
       )
+      console.log(response);
     }
   
   
