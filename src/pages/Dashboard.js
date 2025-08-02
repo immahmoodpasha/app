@@ -46,18 +46,18 @@ const Dashboard = () => {
                             <div id="inventory">
                                 <Inventory />
                             </div>
-                            {/* <div id="inventoryTrends">
+                            <div id="inventoryTrends">
                                 <InventoryTrends />
-                            </div> */}
+                            </div>
                         </div>
                         
                         <div id="right-dash">
-                            {/* <div id="inventorySummary">
+                            <div id="inventorySummary">
                                 <InventorySummary />
                             </div>
                             <div id="categoryDistribution">
                                 <CategoryDistribution />
-                            </div> */}
+                            </div>
                         </div>
                        
                         

@@ -11,41 +11,71 @@ import {
   usePagination,
   useGlobalFilter,
 } from "react-table";
-
-function GlobalFilter({ filter, setFilter }) {
-  return (
-    <input
-      value={filter || ""}
-      onChange={(e) => setFilter(e.target.value)}
-      placeholder="Search..."
-      className="search-input"
-    />
-  );
-}
+import { useJWT } from "../jwtContextProvider.js";
+import {debounce} from 'lodash';
 
 
 
 function Inventory() {
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [editingRowId, setEditingRowId] = useState(null);
   const [editableItem, setEditableItem] = useState({});
   const justStartedEditing = useRef(true);
+  const {getAuthHeader} = useJWT();
+  const [serverParams, setServerParams] = useState({
+    pageNumber: 1,
+    sortBy: 'itemName',
+    isAscending: true,
+    filterQuery: ''
+  });
+  const [totalItems, setTotalItems] = useState(0);
 
-  const fetchData = async () => {
+  const headers = getAuthHeader();
+
+  const fetchData = async (pageNumber, pageSize) => {
+    setLoading(true);
     try {
-      const response = await apiClient.get("Product",
-        
-      );
+      const response = await apiClient.get("api/Product",{
+        params: {
+          PageNumber: serverParams.pageNumber,
+          sortBy: serverParams.sortBy,
+          isAscending: serverParams.isAscending,
+          filterQuery: serverParams.filterQuery
+        },
+        headers: headers,
+      });
       console.log("Response of fetch: ", response)
-      setData(response.data);
+      setData(response.data.items);
+      setTotalItems(response.data.total);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally{
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [serverParams]);
+
+  const handlePageChange = (newPage) => {
+    setServerParams(prev=>({
+      ...prev, pageNumber: newPage
+    }));
+  }
+
+  const handleSort = (columnName) => {
+    setServerParams(prev=>({
+      ...prev, sortBy: columnName,
+      isAscending: prev.sortBy === columnName ? !prev.isAscending : true,
+      pageNumber: 1
+    }))
+  }
+
+  const handleSearch = (value) => {
+    debouncedSearch(value);
+  }
 
   const { handleEdit, handleSave, toggleActive } = useMemo(() => {
     const handleEdit = (id) => {
@@ -59,7 +89,7 @@ function Inventory() {
 
     const handleSave = async () => {
       try {
-        await apiClient.patch(`Products/${editingRowId}`, editableItem);
+        await apiClient.patch(`api/Product/${editingRowId}`, editableItem);
         setData((prevData) =>
           prevData.map((item) =>
             item.id === editingRowId ? { ...item, ...editableItem } : item
@@ -242,29 +272,58 @@ function Inventory() {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page,
     prepareRow,
-    nextPage,
-    previousPage,
     canNextPage,
     canPreviousPage,
-    state,
-    setGlobalFilter,
+    pageCount: controlledPageCount,
+    state: {pageIndex, pageSize}
   } = useTable(
     {
       columns,
       data,
+      manualPagination: true,
+      manualSortBy: true,
+      manualGlobalFilter: true,
+      pageCount: Math.ceil(totalItems / serverParams.pageSize),
       autoResetPage: false,
       initialState: {
-        pageSize: 6,
+        pageIndex: 0,
+        pageSize: 10,
       },
+      state: {
+        pageIndex: serverParams.pageNumber,
+        pageSize: serverParams.pageSize
+      }
     },
-    useGlobalFilter,
     useSortBy,
     usePagination
   );
 
-  const { globalFilter } = state;
+  useEffect(()=>{
+    setServerParams(prev=>({
+      ...prev,
+      pageNumber: pageIndex + 1,
+      pageSize: pageSize
+    }));
+  }, [pageIndex, pageSize]);
+
+
+
+  const debouncedSearch = useRef(
+    debounce((value)=> {
+      setServerParams(prev=>({
+        ...prev,
+        filterQuery: value,
+        pageNumber: 1
+      }));
+    }, 300)
+  ).current;
+
+  useEffect(()=>{
+    return ()=>{
+      debouncedSearch.cancel();
+    }
+  },[debouncedSearch]);
 
   return (
     <div className="main">
@@ -277,9 +336,17 @@ function Inventory() {
             <div id="search-cont">
               <FaSearch id="search-icon" />
               <div id="search">
-                <GlobalFilter
-                  filter={globalFilter}
-                  setFilter={setGlobalFilter}
+                <input 
+                type="text"
+                value={serverParams.filterQuery}
+                onChange={(e)=>setServerParams(prev=>({...prev, filterQuery: e.target.value}))}
+                onKeyDown={(e)=>{
+                  if (e.key === 'Enter'){
+                    debouncedSearch(e.target.value);
+                  }
+                }}
+                placeholder="Search..."
+                className="search_input"
                 />
               </div>
             </div>
