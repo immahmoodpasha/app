@@ -11,41 +11,63 @@ function Login() {
     email: '',
     password: ''
   })
+  const [serverError, setServerError] = useState('');
+  
+  const navigate=useNavigate();
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const validate = () => {
+    console.log(error);
+    const newError={};
+
     if (!emailValue.trim()){
-      error.email='Email is required.'
+      newError.email='Email is required.'
     }
     else if (!emailRegex.test(emailValue)){
-      error.email='Please enter a valid email address.'
+      newError.email='Please enter a valid email address.'
     }
 
     if (!passwordValue.trim()){
-      error.password='Password is required.'
+      newError.password='Password is required.'
     }
     else if (passwordValue.trim().length < 3){
-      error.password='Password must be more than 3 characters'
+      newError.password='Password must be more than 3 characters'
     }
+
+    setError(newError);
+    console.log(error);
+    return Object.keys(newError).length === 0;
   }
 
-  const navigate=useNavigate();
   const handleSubmit= async (e)=>{
     e.preventDefault();
+    const validatedResponse = validate();
+    if (!validatedResponse){
+      console.log('Validation failed.');
+      return
+    }
+    console.log('Validation successful! Submitting Data.');
     setLoginLoading(true);
     
     try{
       const response = await apiClient.post("api/Auth/Login",
       JSON.stringify(
         {
-        'email': emailValue,
+        'username': emailValue,
         'password': passwordValue
         }
       ));
+      
       console.log(response);
+
+      if (response.status === 200) {
+        const jwt = response.data.data.jwtToken;
+        console.log(jwt);
+      }
     }catch(error){
       console.log(error);
+      setServerError(error.message);
     }
     setLoginLoading(false);
   }
@@ -58,17 +80,22 @@ function Login() {
         <div id='welcome_back'>Welcome Back</div>
         <div id='input_form'>
           <div id='email'>
-            <label>Email</label>
-            <input name="email" type="email" placeholder='Enter your email' value={emailValue} onChange={(e)=>setEmailValue(e.target.value)}/>
+            <label>Email Address</label>
+            <input className={`${error.email? 'error' : ''}`} name="email" type="email" placeholder='Enter your email' value={emailValue} onChange={(e)=>setEmailValue(e.target.value)}/>
+            <div className={`error_email ${error.email? 'active' : ''}`}>{error.email? error.email : 'No Error'}</div>
           </div>
           <div id='password'>
             <label>Password</label>
-            <input name="password" type="password" placeholder='Enter your password' value={passwordValue} onChange={(e)=>setPasswordValue(e.target.value)}/>
+            <input className={`${error.password? 'error' : ''}`} name="password" type="password" placeholder='Enter your password' value={passwordValue} onChange={(e)=>setPasswordValue(e.target.value)}/>
+            <div className={`error_password ${error.password? 'active' : ''}`}>{error.password? error.password : 'No Error'}</div>          
           </div>
         </div>
-        {loginLoading? <button id='submit_btn_loading' disabled>Logging in ...</button> : <button id='submit_btn' onClick={handleSubmit}>Login</button>}
+        <button className={`submit_btn ${loginLoading? 'loading' : ''}`} onClick={handleSubmit} disabled={loginLoading}>{loginLoading? 'Logging in...' : 'Login'}</button>
         
         <div id='forgot_pwd'><a>Forgot Password?</a></div>
+      </div>
+      <div className={`serverError ${serverError? 'active' : ''}`}>
+        {serverError}
       </div>
     </div>
     

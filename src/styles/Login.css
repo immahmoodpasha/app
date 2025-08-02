@@ -6,6 +6,7 @@
   background-color:#EEEDFF; 
   overflow: hidden;
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -22,14 +23,14 @@
 #welcome_back{
   font-weight: 800;
   color: #1a173a;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   font-size: 20px;
 }
 #input_form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 }
 #email, #password{
   display: flex;
@@ -55,9 +56,24 @@
 #email input:focus,#password input:focus{
   border-color: #5D52CE;
 }
-#submit_btn {
+#email input.error, #password input.error {
+  border-color: red;
+}
+
+.error_email, .error_password {
+  opacity: 0;
+  font-size: 12px;
+}
+
+.error_email.active, .error_password.active {
+  opacity: 1;
+  color: red;
+}
+
+
+.submit_btn {
   box-sizing: border-box;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 275px;
   padding: 15px;
   background-color:#5D52CE;
@@ -67,24 +83,18 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-#submit_btn:hover{
-  background-color: #38327d;
   font-weight: 600;
 }
 
-#submit_btn_loading {
-  box-sizing: border-box;
-  margin-top: 20px;
-  width: 275px;
-  padding: 15px;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  background-color: #6a6a6a;
+.submit_btn:hover{
+  background-color: #38327d;
+  font-weight: 800;
+}
+
+.submit_btn.loading {
+  background-color: #525252;
   cursor: not-allowed;
+  font-weight: 400;
 }
 
 #forgot_pwd{
@@ -97,4 +107,12 @@
 #forgot_pwd:hover{
   cursor: pointer;
   color: #1a173a;
+}
+
+.serverError.active{
+  background-color: #c33232;
+  color: white;
+  margin-top: 3%;
+  padding: 2%;
+  border-radius: 10px;
 }
