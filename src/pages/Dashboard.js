@@ -9,9 +9,18 @@ import OverviewAnalytics from "./OverviewAnalytics";
 import { FiSearch, FiMessageCircle, FiLink, FiLogOut } from 'react-icons/fi';
 import exit from "../assets/exit.png"
 import logo from "../assets/RapiddLogo.png"
+import { useJWT } from "../jwtContextProvider";
+import { useNavigate } from "react-router-dom";
+
 
 const Dashboard = () => {
+    const {logout} = useJWT();
     const [selectedOption, setSelectedOption] = useState('Inv');
+    const navigate = useNavigate();
+    const logoutFxn = () => {
+        logout();
+        navigate('/');
+    }
     
     return(
         <div id="dashboard">
@@ -24,7 +33,7 @@ const Dashboard = () => {
                                 <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')}>Inventory</div>
                                 <div id="statisticsOption" onClick={()=>setSelectedOption('St')}>Statistics</div>
                             </div>
-                            <button id="logout-manager"><FiLogOut size={24} /></button>
+                            <button id="logout-manager" onClick={logoutFxn}><FiLogOut size={24} /></button>
                         </div>
                     </div>
                 </div>
@@ -37,18 +46,18 @@ const Dashboard = () => {
                             <div id="inventory">
                                 <Inventory />
                             </div>
-                            <div id="inventoryTrends">
+                            {/* <div id="inventoryTrends">
                                 <InventoryTrends />
-                            </div>
+                            </div> */}
                         </div>
                         
                         <div id="right-dash">
-                            <div id="inventorySummary">
+                            {/* <div id="inventorySummary">
                                 <InventorySummary />
                             </div>
                             <div id="categoryDistribution">
                                 <CategoryDistribution />
-                            </div>
+                            </div> */}
                         </div>
                        
                         

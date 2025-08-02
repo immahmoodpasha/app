@@ -33,7 +33,10 @@ function Inventory() {
 
   const fetchData = async () => {
     try {
-      const response = await apiClient.get("Products");
+      const response = await apiClient.get("Product",
+        
+      );
+      console.log("Response of fetch: ", response)
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);

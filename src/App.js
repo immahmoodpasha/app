@@ -9,6 +9,7 @@ import InventoryTrends from './pages/InventoryTrends';
 import Dashboard from './pages/Dashboard';
 import CategoryRevenue from './pages/CategoryRevenue';
 import OverviewAnalytics from './pages/OverviewAnalytics';
+import ProtectedRoute from './ProtectedRoute';
 import "./App.css";
 
 function App() {
@@ -17,14 +18,17 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/newproduct" element={<NewProduct />} />
-          <Route path="/InventorySummary" element={<InventorySummary />} />
-          <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
-          <Route path="/InventoryTrends" element={<InventoryTrends />} />
-          <Route path="/CategoryRevenue" element={<CategoryRevenue />} />
-          <Route path="/OverviewAnalytics" element={<OverviewAnalytics />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/newproduct" element={<NewProduct />} />
+            <Route path="/InventorySummary" element={<InventorySummary />} />
+            <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
+            <Route path="/InventoryTrends" element={<InventoryTrends />} />
+            <Route path="/CategoryRevenue" element={<CategoryRevenue />} />
+            <Route path="/OverviewAnalytics" element={<OverviewAnalytics />} />
+          </Route>
+          
         </Routes>
       </Router>
     </div>

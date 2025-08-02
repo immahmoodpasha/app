@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/Login.css';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../apiClient/axiosObject';
+import { useJWT } from '../jwtContextProvider';
 
 function Login() {
   const [emailValue, setEmailValue] = useState('');
@@ -12,6 +13,7 @@ function Login() {
     password: ''
   })
   const [serverError, setServerError] = useState('');
+  const {login} = useJWT();
   
   const navigate=useNavigate();
 
@@ -64,6 +66,8 @@ function Login() {
       if (response.status === 200) {
         const jwt = response.data.data.jwtToken;
         console.log(jwt);
+        login(jwt);
+        navigate('/dashboard');
       }
     }catch(error){
       console.log(error);
