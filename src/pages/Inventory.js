@@ -367,29 +367,27 @@ function Inventory() {
             <thead className="table_head">
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
+                  {headerGroup.headers.map((column) => {
+                    const {key, ...headerProps} = column.getHeaderProps();
+                    return(
                     <th
-                    key={column.id}
-                      {...column.getHeaderProps()}
+                    key={key}
+                      {...headerProps}
                       onClick={()=>handleSort(column.id)}
                       style={{ paddingLeft: "10px" }}
                     >
-                      {column.render("Header")}
-                      {!column.disableSortBy && (
-                        <img
-                          src="https://static.thenounproject.com/png/24967-200.png"
-                          alt="Sort Icon"
-                          width={16}
-                          height={16}
-                          style={{
-                            cursor: "pointer",
-                            marginLeft: "6px",
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      )}
-                    </th>
-                  ))}
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        {column.render("Header")}
+                        {!column.disableSortBy && (
+                          <span style={{ marginLeft: "5px" }}>
+                            {serverParams.sortBy === column.id
+                              ? serverParams.isAscending ? "↑" : "↓"
+                              : "↕"}
+                          </span>
+                        )}
+                      </div>
+                    </th>)
+                  })}
                 </tr>
               ))}
             </thead>
