@@ -39,6 +39,7 @@ function Inventory() {
       const response = await apiClient.get("api/Product",{
         params: {
           PageNumber: serverParams.pageNumber,
+          PageSize: serverParams.pageSize,
           sortBy: serverParams.sortBy,
           isAscending: serverParams.isAscending,
           filterQuery: serverParams.filterQuery
@@ -361,6 +362,7 @@ function Inventory() {
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
+                      onClick={()=>handleSort(column.id)}
                       style={{ paddingLeft: "10px" }}
                     >
                       {column.render("Header")}
@@ -370,7 +372,6 @@ function Inventory() {
                           alt="Sort Icon"
                           width={16}
                           height={16}
-                          onClick={() => column.toggleSortBy()}
                           style={{
                             cursor: "pointer",
                             marginLeft: "6px",
@@ -400,20 +401,37 @@ function Inventory() {
             <tfoot>
               <tr>
                 <td colSpan={columns.length} style={{ textAlign: "center" }}>
-                  <div id="btn-ft">
+                  <div className="pagination-controls">
                     <button
-                      id="prev"
-                      onClick={() => previousPage()}
-                      disabled={!canPreviousPage}
+                      onClick={() => handlePageChange(1)}
+                      disabled={serverParams.pageNumber === 1}
+                      className="pagination-button"
                     >
-                      Previous
+                      {'<<'}
                     </button>
                     <button
-                      id="next"
-                      onClick={() => nextPage()}
-                      disabled={!canNextPage}
+                      onClick={() => handlePageChange(serverParams.pageNumber - 1)}
+                      disabled={serverParams.pageNumber === 1}
+                      className="pagination-button"
                     >
-                      Next
+                      {'<'}
+                    </button>
+                    <span className="page-info">
+                      Page {serverParams.pageNumber} of {Math.ceil(totalItems / serverParams.pageSize)}
+                    </span>
+                    <button
+                      onClick={() => handlePageChange(serverParams.pageNumber + 1)}
+                      disabled={serverParams.pageNumber >= Math.ceil(totalItems / serverParams.pageSize)}
+                      className="pagination-button"
+                    >
+                      {'>'}
+                    </button>
+                    <button
+                      onClick={() => handlePageChange(Math.ceil(totalItems / serverParams.pageSize))}
+                      disabled={serverParams.pageNumber >= Math.ceil(totalItems / serverParams.pageSize)}
+                      className="pagination-button"
+                    >
+                      {'>>'}
                     </button>
                   </div>
                 </td>
