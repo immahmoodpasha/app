@@ -411,15 +411,22 @@ function Inventory() {
                   return (
                   <tr key={row.id}>
                     {columns.map(column => {
-                      const value = column.accessor.split(".").reduce((obj, key)=> {
-                        console.log(`Accessing key '${key}' in: `, obj);
-                        return (obj && obj[key] !== undefined ? obj[key] : null);
-                      },row);
+                      let value;
+                      if (typeof column.accessor === "function"){
+                        value = column.accessor(row);
+                      }else{
+                        value = column.accessor.split(".").reduce((obj, key)=> {
+                          console.log(`Accessing key '${key}' in: `, obj);
+                          return (obj && obj[key] !== undefined ? obj[key] : null);
+                        },row);
+                      }
                       console.log(`Column ${column.accessor}:`, {
                         hasAccessor: column.accessor in row,
                         value: row[column.accessor],
                         column
                       });
+
+                      const Cell = column.Cell || (({ value }) => value);
                       return(
                       <td key={`${row.id}-${column.accessor}`}>
                         {column.Cell 
