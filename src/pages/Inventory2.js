@@ -15,6 +15,7 @@ useGlobalFilter,
 } from "react-table";
 import { useJWT } from "../jwtContextProvider.js";
 import {debounce, values} from 'lodash';
+import '../styles/Inventory.css'
 
 const Inventory2 = () => {
 // 2. Simplify the component state
@@ -264,52 +265,53 @@ return <div>No products found</div>;
 
 // 7. Simplified table render
 return (
-<div className="table-container">
-  <table className="inventory_table" {...getTableProps()}>
-  <thead>
-      {headerGroups.map((headerGroup, i) => (
-          <tr key={`header-${i}`} {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map((column, j) => (
-              <th
-              key={`header-cell-${j}`}
-              {...column.getHeaderProps()}
-              style={{
-                  padding: '8px',
-                  borderBottom: '1px solid #ddd',
-                  textAlign: 'left'
-              }}
-              >
-              {column.render('Header')}
-              </th>
-          ))}
-          </tr>
-      ))}
-  </thead>
-  <tbody {...getTableBodyProps()}>
-      {rows.map((row, i) => {
-          prepareRow(row);
-          return (
-          <tr key={`row-${i}`} {...row.getRowProps()}>
-              {row.cells.map((cell, j) => (
-              <td
-                  key={`cell-${i}-${j}`}
-                  {...cell.getCellProps()}
-              >
-                  {cell.render('Cell')}
-              </td>
+  <div className="inventory-table-container">
+    <div className='table-header'>
+      <h3 className='table-title'>Inventory Items</h3>
+      <hr className='header-line' />
+    </div>
+    <div className="table-content">
+      <table className="inventory_table" {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup, i) => (
+            <tr key={`header-${i}`} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, j) => (
+                <th
+                  key={`header-cell-${j}`}
+                  {...column.getHeaderProps()}
+                  style={{
+                    padding: '8px',
+                    borderBottom: '1px solid #ddd',
+                    textAlign: 'left'
+                  }}
+                >
+                  {column.render('Header')}
+                </th>
               ))}
-          </tr>
-          );
-      })}
-  </tbody>
-  </table>
-  {loading && <div>Loading...</div>}
-</div>
+            </tr>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row, i) => {
+            prepareRow(row);
+            return (
+              <tr key={`row-${i}`} {...row.getRowProps()}>
+                {row.cells.map((cell, j) => (
+                  <td
+                    key={`cell-${i}-${j}`}
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      {loading && <div>Loading...</div>}
+    </div>
+  </div>
 );
 }
 export default Inventory2;
-
-
-
-
-

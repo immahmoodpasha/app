@@ -81,6 +81,36 @@
   color: hsl(0, 0%, 0%, 0.5);
 }
 
+.inventory-table-container {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+.table-header {
+  margin-bottom: 15px;
+}
+
+.table-title {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin: 0 0 5px 0;
+}
+
+.header-line {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 5px 0 15px 0;
+}
+
+.table-content {
+  overflow-x: auto;
+}
+
 table.inventory_table {
   width: 100%;
   border-collapse: collapse;
