@@ -128,7 +128,12 @@ function Inventory() {
   }, [data, editableItem, editingRowId]);
 
   const columns = useMemo(
-    () => {},
+    () => [
+      {
+        Header: "Item Name",
+        accessor: "name",
+      }
+    ],
     []);
 
   const {
@@ -199,89 +204,46 @@ function Inventory() {
           </div>
         </div>
         <div className="table-container">
-          <table className="inventory_table" {...getTableProps()}>
-            <thead className="table_head">
-              {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => {
-                    return(
-                    <th
-                    key={key}
-                      {...headerProps}
-                      onClick={()=>handleSort(column.accessor)}
-                      style={{ paddingLeft: "10px" }}
-                      {...column.getHeaderProps()}
-                    >
-                      {/* <div style={{ display: "flex", alignItems: "center" }}>
-                        {column.render("Header")}
-                        {!column.disableSortBy && (
-                          <span style={{ marginLeft: "5px" }}>
-                            {serverParams.sortBy === column.accessor
-                              ? serverParams.isAscending ? "↑" : "↓"
-                              : "↕"}
-                          </span>
-                        )}
-                      </div> */}
-                      {column.render("Header")}
-                    </th>)
-                  })}
-                </tr>
-              ))}
-            </thead>
-            <tbody className="table_body" {...getTableBodyProps()}>
-                {rows.map(row => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map(cell => (
-                      <td {...cell.getCellProps()}>
-                        {cell.render('Cell')}
-                      </td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan={columns.length} style={{ textAlign: "center" }}>
-                  <div className="pagination-controls">
-                    <button
-                      onClick={() => handlePageChange(1)}
-                      disabled={serverParams.pageNumber === 1}
-                      className="pagination-button"
-                    >
-                      {'<<'}
-                    </button>
-                    <button
-                      onClick={() => handlePageChange(serverParams.pageNumber - 1)}
-                      disabled={serverParams.pageNumber === 1}
-                      className="pagination-button"
-                    >
-                      {'<'}
-                    </button>
-                    <span className="page-info">
-                      Page {serverParams.pageNumber} of {Math.ceil(totalItems / serverParams.pageSize)}
-                    </span>
-                    <button
-                      onClick={() => handlePageChange(serverParams.pageNumber + 1)}
-                      disabled={serverParams.pageNumber >= Math.ceil(totalItems / serverParams.pageSize)}
-                      className="pagination-button"
-                    >
-                      {'>'}
-                    </button>
-                    <button
-                      onClick={() => handlePageChange(Math.ceil(totalItems / serverParams.pageSize))}
-                      disabled={serverParams.pageNumber >= Math.ceil(totalItems / serverParams.pageSize)}
-                      className="pagination-button"
-                    >
-                      {'>>'}
-                    </button>
-                  </div>
+        <table className="inventory_table" {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th 
+                {...column.getHeaderProps()}
+                style={{
+                  padding: '8px',
+                  borderBottom: '1px solid #ddd',
+                  textAlign: 'left'
+                }}
+              >
+                {column.render('Header')}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row);
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => (
+                <td 
+                  {...cell.getCellProps()}
+                  style={{
+                    padding: '8px',
+                    borderBottom: '1px solid #eee'
+                  }}
+                >
+                  {cell.render('Cell')}
                 </td>
-              </tr>
-            </tfoot>
-          </table>
+              ))}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
         </div>
       </div>
     </div>
