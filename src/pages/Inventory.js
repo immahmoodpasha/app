@@ -131,11 +131,11 @@ function Inventory() {
       const cols = [
       {
         Header: "Item Name",
-        accessor: "itemName",
+        accessor: "name",
       },
       {
         Header: "Category",
-        accessor: "category",
+        accessor: "category.name",
       },
       {
   Header: "Quantity",
@@ -159,7 +159,7 @@ function Inventory() {
 },
 {
   Header: "Unit Price",
-  accessor: "unitPrice",
+  accessor: "price",
   Cell: ({ row }) =>
     row.original.id === editingRowId ? (
       <input
@@ -200,7 +200,7 @@ function Inventory() {
 ,
       {
         Header: "Status",
-        accessor: "status",
+        accessor: "productStatus",
         Cell: ({ row }) => {
           let status = "";
           let color = "";
