@@ -408,6 +408,7 @@ function Inventory() {
               ) : data && data.length > 0 ? (
                 data.map((row, rowIndex) => {
                   console.log(`Row ${rowIndex}:`, row);
+                  if (!row || typeof row !== "object") return null;
                   return (
                   <tr key={row.id}>
                     {columns.map(column => {
@@ -420,11 +421,11 @@ function Inventory() {
                           return (obj && obj[key] !== undefined ? obj[key] : null);
                         },row);
                       }
-                      console.log(`Column ${column.accessor}:`, {
-                        hasAccessor: column.accessor in row,
-                        value: row[column.accessor],
-                        column
-                      });
+                      // console.log(`Column ${column.accessor}:`, {
+                      //   hasAccessor: column.accessor in row,
+                      //   value: row[column.accessor],
+                      //   column
+                      // });
 
                       const Cell = column.Cell || (({ value }) => value);
                       return(
