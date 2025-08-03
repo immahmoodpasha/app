@@ -23,10 +23,15 @@ const [loading, setLoading] = useState(true);
 
 // 3. Basic columns definition
 const columns = useMemo(() => [
-  {
-    Header: "Item Name",
-    accessor: "name",
-  }
+    {
+        Header: "Item Name",
+        accessor: "name",
+    },
+    {
+        Header: "Category",
+        accessor: "category.name", // Using dot notation for nested property
+        Cell: ({ value }) => value || 'N/A' // Simple cell renderer
+    }
 ], []);
 
 // 4. Basic table instance
