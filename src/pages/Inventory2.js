@@ -33,7 +33,17 @@ filterQuery: ''
 const [totalItems, setTotalItems] = useState(0);
 const {getAuthHeader} = useJWT();
 const headers = getAuthHeader();
+const [searchInput, setSearchInput] = useState('');
 
+// Add this function to handle search
+const handleSearch = (e) => {
+  e.preventDefault();
+  setServerParams(prev => ({
+    ...prev,
+    filterQuery: searchInput,
+    pageNumber: 1 // Reset to first page when searching
+  }));
+};
 const { handleEdit, handleSave, toggleActive } = useMemo(() => {
  const handleEdit = (id) => {
    const item = data.find((item) => item.id === id);
@@ -354,7 +364,21 @@ return <div>No products found</div>;
 return (
 <div className="inventory-table-container">
   <div className='table-header'>
-    <h3 className='table-title'>Inventory Items</h3>
+    <div className='header-content'>
+      <h3 className='table-title'>Inventory Items</h3>
+      <form onSubmit={handleSearch} className="search-form">
+          <div className="search-input-container">
+            <FaSearch className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search inventory..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              className="search-input"
+            />
+          </div>
+        </form>
+      </div>
     <hr className='header-line' />
   </div>
   <div className="table-content">
