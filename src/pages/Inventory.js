@@ -46,6 +46,7 @@ function Inventory() {
         },
         headers: headers,
       });
+      console.log("API Response:", response.data);
       console.log("Response of fetch: ", response)
       console.log("Data structure:", {
         hasData: !!response.data.data,
@@ -136,7 +137,11 @@ function Inventory() {
       {
         Header: "Category",
         accessor: "category",
-        Cell: ({ value }) => value?.name || 'N/A',
+        Cell: ({ value }) => {
+          console.log("Value: ", value);
+          return value?.name || 'N/A';
+
+        }
       },
       {
   Header: "Quantity",
@@ -208,7 +213,7 @@ function Inventory() {
           if (values === "OutOfStock") {
             status = "Out of Stock";
             color = "red";
-          } else if (value === "LowStock") {
+          } else if (values === "LowStock") {
             status = "Low Stock";
             color = "orange";
           } else {
@@ -401,10 +406,13 @@ function Inventory() {
                   </td>
                 </tr>
               ) : data && data.length > 0 ? (
-                data.map((row, rowIndex) => (
+                data.map((row, rowIndex) => {
+                  console.log(`Row ${rowIndex}:`, row);
+                  return (
                   <tr key={row.id}>
                     {columns.map(column => {
                       const value = column.accessor.split(".").reduce((obj, key)=> obj && obj[key] !== undefined ? obj[key] : null, row);
+                      console.log(`Accessing key '${key}' in: `, obj);
                       console.log(`Column ${column.accessor}:`, {
                         hasAccessor: column.accessor in row,
                         value: row[column.accessor],
@@ -419,7 +427,8 @@ function Inventory() {
                       );
                     })}
                   </tr>
-                ))
+                  );
+                  })
               ) : (
                 <tr>
                   <td colSpan={columns.length} style={{ textAlign: "center" }}>
