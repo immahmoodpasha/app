@@ -133,6 +133,7 @@ function Inventory() {
       {
         Header: "Item Name",
         accessor: "name",
+        id: "name"
       },
       {
         Header: "Category",
