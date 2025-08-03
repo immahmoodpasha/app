@@ -12,7 +12,7 @@ import {
   useGlobalFilter,
 } from "react-table";
 import { useJWT } from "../jwtContextProvider.js";
-import {debounce} from 'lodash';
+import {debounce, values} from 'lodash';
 
 
 
@@ -97,7 +97,7 @@ function Inventory() {
 
     const handleSave = async () => {
       try {
-        await apiClient.patch(`api/Product/${editingRowId}`, editableItem);
+        await apiClient.patch(`api/Product/${editingRowId}`, editableItem, {headers});
         setData((prevData) =>
           prevData.map((item) =>
             item.id === editingRowId ? { ...item, ...editableItem } : item
@@ -135,7 +135,8 @@ function Inventory() {
       },
       {
         Header: "Category",
-        accessor: "category.name",
+        accessor: "category",
+        Cell: ({ value }) => value?.name || 'N/A',
       },
       {
   Header: "Quantity",
@@ -169,7 +170,7 @@ function Inventory() {
         onChange={(e) =>
           setEditableItem((prev) => ({
             ...prev,
-            unitPrice: Number(e.target.value),
+            price: Number(e.target.value),
           }))
         }
       />
@@ -204,10 +205,10 @@ function Inventory() {
         Cell: ({ row }) => {
           let status = "";
           let color = "";
-          if (row.original.quantity === 0) {
+          if (values === "OutOfStock") {
             status = "Out of Stock";
             color = "red";
-          } else if (row.original.quantity < row.original.threshold) {
+          } else if (value === "LowStock") {
             status = "Low Stock";
             color = "orange";
           } else {
@@ -391,7 +392,7 @@ function Inventory() {
                 </tr>
               ))}
             </thead>
-            <tbody className="table_body" {...getTableBodyProps()}>
+            <tbody className="table_body">
               {console.log("Current data in table: ", {data, loading})}
               {loading ? (
                 <tr>
@@ -403,6 +404,7 @@ function Inventory() {
                 data.map((row, rowIndex) => (
                   <tr key={row.id}>
                     {columns.map(column => {
+                      const value = column.accessor.split(".").reduce((obj, key)=> obj && obj[key] !== undefined ? obj[key] : null, row);
                       console.log(`Column ${column.accessor}:`, {
                         hasAccessor: column.accessor in row,
                         value: row[column.accessor],
@@ -410,7 +412,9 @@ function Inventory() {
                       });
                       return(
                       <td key={`${row.id}-${column.accessor}`}>
-                        {row[column.accessor]}
+                        {column.Cell 
+                          ? column.Cell({ value, row: { original: row } }) 
+                          : value}
                       </td>
                       );
                     })}
