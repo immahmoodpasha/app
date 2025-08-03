@@ -359,6 +359,7 @@ function Inventory() {
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
                     <th
+                    key={column.id}
                       {...column.getHeaderProps()}
                       onClick={()=>handleSort(column.id)}
                       style={{ paddingLeft: "10px" }}
@@ -382,19 +383,32 @@ function Inventory() {
                 </tr>
               ))}
             </thead>
-            <tbody className="table_body" {...getTableBodyProps()}>
-              {/* {data.map((row, i) => {
-                prepareRow(row);
-                return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => (
-                      <td key={cell.column.id} {...cell.getCellProps()}>
-                        {cell.render("Cell")}
+            <tbody className="table_body">
+              {loading ? (
+                <tr>
+                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                    Loading...
+                  </td>
+                </tr>
+              ) : data && data.length > 0 ? (
+                data.map((row) => (
+                  <tr key={row.id}>
+                    {columns.map(column => (
+                      <td key={`${row.id}-${column.accessor}`}>
+                        {column.Cell 
+                          ? column.Cell({ value: row[column.accessor], row }) 
+                          : row[column.accessor]}
                       </td>
                     ))}
                   </tr>
-                );
-              })} */}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                    No data found
+                  </td>
+                </tr>
+              )}
             </tbody>
             <tfoot>
               <tr>
