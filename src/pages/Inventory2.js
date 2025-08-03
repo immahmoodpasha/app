@@ -326,22 +326,34 @@ data: data || [],
 
 // 5. Simplified fetch function
 const fetchData = async () => {
-setLoading(true);
-try {
-const response = await apiClient.get("api/Product", {headers});
-setData(response.data.data || []);
-console.log("Data fetched:", response.data.data);
-} catch (error) {
-console.error("Error fetching data:", error);
-} finally {
-setLoading(false);
-}
+  setLoading(true);
+  try {
+    const response = await apiClient.get("api/Product", {
+      params: {
+        pageNumber: serverParams.pageNumber,
+        sortBy: serverParams.sortBy,
+        isAscending: serverParams.isAscending,
+        filterQuery: serverParams.filterQuery
+      },
+      headers
+    });
+    setData(response.data.data || []);
+    console.log("Data fetched:", response.data.data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  } finally {
+    setLoading(false);
+  }
 };
 
 // 6. Fetch data on mount
 useEffect(() => {
-fetchData();
-}, []);
+  const timer = setTimeout(() => {
+    fetchData();
+  }, 300); // Add debounce to prevent too many requests
+
+  return () => clearTimeout(timer);
+}, [serverParams]);
 
 if (loading) {
 return (
