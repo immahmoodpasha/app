@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
-import Inventory from './pages/Inventory';
+import Inventory2 from './pages/Inventory2';
 import NewProduct from './pages/NewProduct';
 import InventorySummary from './pages/InventorySummary'
 import CategoryDistribution from './pages/CategoryDistribution';
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route element={<ProtectedRoute />}>
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/inventory" element={<Inventory2 />} />
             <Route path="/newproduct" element={<NewProduct />} />
             <Route path="/InventorySummary" element={<InventorySummary />} />
             <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
