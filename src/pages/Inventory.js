@@ -128,199 +128,20 @@ function Inventory() {
   }, [data, editableItem, editingRowId]);
 
   const columns = useMemo(
-    () => {
-      const cols = [
-      {
-        Header: "Item Name",
-        accessor: "name",
-        id: "name"
-      },
-      {
-        Header: "Category",
-        accessor: "category",
-        id: "category",
-        Cell: ({ value }) => {
-          if (typeof value === 'object' && value !== null) {
-            return value.name || 'N/A';
-          }
-          return 'N/A';
-        }
-        
-      },
-      {
-  Header: "Quantity",
-  accessor: "quantity",
-  id: "quantity",
-  Cell: ({ row }) =>
-    row.original.id === editingRowId ? (
-      <input
-        className="inputfield"
-        type="number"
-        value={editableItem.quantity ?? ""}
-        onChange={(e) =>
-          setEditableItem((prev) => ({
-            ...prev,
-            quantity: Number(e.target.value),
-          }))
-        }
-      />
-    ) : (
-      row.original.quantity
-    ),
-},
-{
-  Header: "Unit Price",
-  accessor: "price",
-  id: "price",
-  Cell: ({ row }) =>
-    row.original.id === editingRowId ? (
-      <input
-        className="inputfield"
-        type="number"
-        value={editableItem.unitPrice ?? ""}
-        onChange={(e) =>
-          setEditableItem((prev) => ({
-            ...prev,
-            price: Number(e.target.value),
-          }))
-        }
-      />
-    ) : (
-      `$${(row.original.unitPrice ?? 0).toFixed(2)}`
-    ),
-},
-{
-  Header: "Threshold",
-  accessor: "threshold",
-  id: "threshold",
-  Cell: ({ row }) =>
-    row.original.id === editingRowId ? (
-      <input
-        className="inputfield"
-        type="number"
-        value={editableItem.threshold ?? ""}
-        onChange={(e) =>
-          setEditableItem((prev) => ({
-            ...prev,
-            threshold: Number(e.target.value),
-          }))
-        }
-      />
-    ) : (
-      row.original.threshold
-    ),
-},
-,
-      {
-        Header: "Status",
-        accessor: "productStatus",
-        id: "productStatus",
-        Cell: ({ row }) => {
-          let status = "";
-          let color = "";
-          if (values === "OutOfStock") {
-            status = "Out of Stock";
-            color = "red";
-          } else if (values === "LowStock") {
-            status = "Low Stock";
-            color = "orange";
-          } else {
-            status = "In Stock";
-            color = "green";
-          }
-          return <span style={{ color }}>{status}</span>;
-        },
-      },
-      {
-        Header: "Actions",
-        accessor: "actions",
-        id: "actions",
-        disableSortBy: true,
-        Cell: ({ row }) => {
-          const { id, isActive } = row.original;
-          return row.original.id === editingRowId ? (
-            <>
-              <button
-                onClick={handleSave}
-                style={{ background: "none", border: "none" }}
-              >
-                <RiArrowUpCircleLine size={25} />
-              </button>
-              <button
-                onClick={() => toggleActive(id)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "blueviolet",
-                }}
-              >
-                {isActive ? (
-                  <FaCheckSquare size={24} style={{ color: "blueviolet" }} />
-                ) : (
-                  <FaRegSquare size={24} style={{ color: "blueviolet" }} />
-                )}
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={() => handleEdit(id)}
-                style={{ background: "none", border: "none", marginRight: 10 }}
-              >
-                <FiEdit2 size={22} style={{ color: "blueviolet" }} />
-              </button>
-              <button
-                onClick={() => toggleActive(id)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "blueviolet",
-                }}
-              >
-                {isActive ? (
-                  <FaCheckSquare size={25} />
-                ) : (
-                  <FaRegSquare size={25} />
-                )}
-              </button>
-            </>
-          );
-        },
-      },
-    ];
-  console.log("Columns definition:", cols);
-  return cols;
-  },
-    [editingRowId, editableItem, handleEdit, handleSave, toggleActive]
-  );
+    () => {},
+    []);
 
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    rows,
     prepareRow,
-    state: {pageIndex, pageSize}
   } = useTable(
     {
       columns,
-      data,
-      manualPagination: true,
-      manualSortBy: true,
-      manualGlobalFilter: true,
-      pageCount: Math.ceil(totalItems / serverParams.pageSize),
-      autoResetPage: false,
-      initialState: {
-        pageIndex: 0,
-        pageSize: serverParams.pageSize,
-      },
-      state: {
-        pageIndex: serverParams.pageNumber,
-        pageSize: serverParams.pageSize
-      }
-    },
-    useSortBy,
-    usePagination
+      data: data || [],
+    }
   );
 
   useEffect(()=>{
@@ -383,15 +204,15 @@ function Inventory() {
               {headerGroups.map((headerGroup) => (
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => {
-                    const {key, ...headerProps} = column.getHeaderProps();
                     return(
                     <th
                     key={key}
                       {...headerProps}
                       onClick={()=>handleSort(column.accessor)}
                       style={{ paddingLeft: "10px" }}
+                      {...column.getHeaderProps()}
                     >
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      {/* <div style={{ display: "flex", alignItems: "center" }}>
                         {column.render("Header")}
                         {!column.disableSortBy && (
                           <span style={{ marginLeft: "5px" }}>
@@ -400,70 +221,21 @@ function Inventory() {
                               : "↕"}
                           </span>
                         )}
-                      </div>
+                      </div> */}
+                      {column.render("Header")}
                     </th>)
                   })}
                 </tr>
               ))}
             </thead>
-            <tbody className="table_body">
-              {console.log("Current data in table: ", {data, loading})}
-              {loading ? (
-                <tr>
-                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
-                    Loading...
-                  </td>
-                </tr>
-              ) : data && data.length > 0 ? (
-                data.map((row, rowIndex) => {
-                  console.log(`Row ${rowIndex}:`, row);
-                  if (!row || typeof row !== "object") return null;
-                  return (
-                  <tr key={row.id}>
-                    {columns.map(column => {
-                      let value;
-                      if (typeof column.accessor === "function"){
-                        value = column.accessor(row);
-                      }else{
-                        value = column.accessor.split(".").reduce((obj, key)=> {
-                          console.log(`Accessing key '${key}' in: `, obj);
-                          return (obj && obj[key] !== undefined ? obj[key] : null);
-                        },row);
-                      }
-                      // console.log(`Column ${column.accessor}:`, {
-                      //   hasAccessor: column.accessor in row,
-                      //   value: row[column.accessor],
-                      //   column
-                      // });
-                      let cellContent;
-                      if (column.Cell){
-                        cellContent = column.Cell({ value, row: { original: row } });
-                      }else{
-                        cellContent = value;
-                      }
-                      return(
-                      <td key={`${row.id}-${column.accessor}`}>
-                        {cellContent}
-                      </td>
-                      );
-                    })}
-                  </tr>
-                  );
-                  })
-              ) : (
-                <tr>
-                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
-                    No data found
-                  </td>
-                </tr>
-              )}
-              {data.map((row, i) => {
+            <tbody className="table_body" {...getTableBodyProps()}>
+                {rows.map(row => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => (
-                      <td key={cell.column.accessor} {...cell.getCellProps()}>
-                        {cell.render("Cell")}
+                    {row.cells.map(cell => (
+                      <td {...cell.getCellProps()}>
+                        {cell.render('Cell')}
                       </td>
                     ))}
                   </tr>
