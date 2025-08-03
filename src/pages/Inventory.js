@@ -138,6 +138,7 @@ function Inventory() {
       {
         Header: "Category",
         accessor: "category",
+        id: "category",
         Cell: ({ value }) => {
           console.log("Value: ", value);
           return value?.name || 'N/A';
@@ -147,6 +148,7 @@ function Inventory() {
       {
   Header: "Quantity",
   accessor: "quantity",
+  id: "quantity",
   Cell: ({ row }) =>
     row.original.id === editingRowId ? (
       <input
@@ -167,6 +169,7 @@ function Inventory() {
 {
   Header: "Unit Price",
   accessor: "price",
+  id: "price",
   Cell: ({ row }) =>
     row.original.id === editingRowId ? (
       <input
@@ -187,6 +190,7 @@ function Inventory() {
 {
   Header: "Threshold",
   accessor: "threshold",
+  id: "threshold",
   Cell: ({ row }) =>
     row.original.id === editingRowId ? (
       <input
@@ -208,6 +212,7 @@ function Inventory() {
       {
         Header: "Status",
         accessor: "productStatus",
+        id: "productStatus",
         Cell: ({ row }) => {
           let status = "";
           let color = "";
@@ -227,6 +232,7 @@ function Inventory() {
       {
         Header: "Actions",
         accessor: "actions",
+        id: "actions",
         disableSortBy: true,
         Cell: ({ row }) => {
           const { id, isActive } = row.original;
@@ -304,7 +310,7 @@ function Inventory() {
       autoResetPage: false,
       initialState: {
         pageIndex: 0,
-        pageSize: 10,
+        pageSize: serverParams.pageSize,
       },
       state: {
         pageIndex: serverParams.pageNumber,
