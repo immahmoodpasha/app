@@ -47,6 +47,12 @@ function Inventory() {
         headers: headers,
       });
       console.log("Response of fetch: ", response)
+      console.log("Data structure:", {
+        hasData: !!response.data.data,
+        dataType: Array.isArray(response.data.data) ? 'array' : typeof response.data.data,
+        dataLength: Array.isArray(response.data.data) ? response.data.data.length : 'N/A',
+        firstItem: response.data.data?.[0]
+      });
       setData(response.data.data);
       console.log(data);
       setTotalItems(response.data.total);
@@ -384,6 +390,37 @@ function Inventory() {
               ))}
             </thead>
             <tbody className="table_body" {...getTableBodyProps()}>
+              {console.log("Current data in table: ", {data, loading})}
+              {loading ? (
+                <tr>
+                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                    Loading...
+                  </td>
+                </tr>
+              ) : data && data.length > 0 ? (
+                data.map((row, rowIndex) => (
+                  <tr key={row.id}>
+                    {columns.map(column => {
+                      console.log(`Column ${column.accessor}:`, {
+                        hasAccessor: column.accessor in row,
+                        value: row[column.accessor],
+                        column
+                      });
+                      return(
+                      <td key={`${row.id}-${column.accessor}`}>
+                        {row[column.accessor]}
+                      </td>
+                      );
+                    })}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={columns.length} style={{ textAlign: "center" }}>
+                    No data found
+                  </td>
+                </tr>
+              )}
               {data.map((row, i) => {
                 prepareRow(row);
                 return (
