@@ -274,9 +274,6 @@ function Inventory() {
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    canNextPage,
-    canPreviousPage,
-    pageCount: controlledPageCount,
     state: {pageIndex, pageSize}
   } = useTable(
     {
@@ -385,7 +382,7 @@ function Inventory() {
               ))}
             </thead>
             <tbody className="table_body" {...getTableBodyProps()}>
-              {page.map((row) => {
+              {data.map((row, i) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
