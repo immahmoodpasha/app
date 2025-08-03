@@ -43,9 +43,7 @@ const Dashboard = () => {
                 {selectedOption==='Inv' && (
                     <div id="tab-content">
                         <div id="left-dash">
-                            <div id="inventory">
-                                <Inventory2 />
-                            </div>
+                            <Inventory2 />
                         </div>
                         
                         <div id="right-dash">
