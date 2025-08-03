@@ -47,7 +47,8 @@ function Inventory() {
         headers: headers,
       });
       console.log("Response of fetch: ", response)
-      setData(response.data.items);
+      setData(response.data.data);
+      console.log(data);
       setTotalItems(response.data.total);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -382,7 +383,7 @@ function Inventory() {
               ))}
             </thead>
             <tbody className="table_body" {...getTableBodyProps()}>
-              {data.map((row, i) => {
+              {/* {data.map((row, i) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
@@ -393,7 +394,7 @@ function Inventory() {
                     ))}
                   </tr>
                 );
-              })}
+              })} */}
             </tbody>
             <tfoot>
               <tr>
