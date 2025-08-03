@@ -411,8 +411,10 @@ function Inventory() {
                   return (
                   <tr key={row.id}>
                     {columns.map(column => {
-                      const value = column.accessor.split(".").reduce((obj, key)=> obj && obj[key] !== undefined ? obj[key] : null, row);
-                      console.log(`Accessing key '${key}' in: `, obj);
+                      const value = column.accessor.split(".").reduce((obj, key)=> {
+                        console.log(`Accessing key '${key}' in: `, obj);
+                        return (obj && obj[key] !== undefined ? obj[key] : null);
+                      },row);
                       console.log(`Column ${column.accessor}:`, {
                         hasAccessor: column.accessor in row,
                         value: row[column.accessor],
