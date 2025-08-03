@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useRef } from "react";
 import "../styles/Inventory.css";
 import apiClient from "../apiClient/axiosObject.js";
-import { FaCheckSquare, FaRegSquare, FaSearch } from "react-icons/fa";
+import { FaCheckSquare, FaRegSquare, FaSearch, FaPlus } from "react-icons/fa";
 import { FiEdit2 } from "react-icons/fi";
 import { AiFillEdit } from "react-icons/ai";
 import { RiArrowUpCircleLine, RiCloseCircleLine } from "react-icons/ri";
@@ -34,6 +34,17 @@ const [totalItems, setTotalItems] = useState(0);
 const {getAuthHeader} = useJWT();
 const headers = getAuthHeader();
 const [searchInput, setSearchInput] = useState('');
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [newItem, setNewItem] = useState({
+name: "",
+costPrice: 0,
+price: 0,
+units: "",
+quantity: 0,
+threshold: 0,
+imageUrl: "",
+categoryId: ""
+});
 
 // Add this function to handle search
 const handleSearch = (e) => {
@@ -44,6 +55,40 @@ const handleSearch = (e) => {
     pageNumber: 1 // Reset to first page when searching
   }));
 };
+
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setNewItem(prev => ({
+    ...prev,
+    [name]: name === 'costPrice' || name === 'price' || name === 'quantity' || name === 'threshold' 
+      ? parseFloat(value) || 0 
+      : value
+  }));
+};
+
+const handleAddItem = async (e) => {
+  e.preventDefault();
+  try {
+    await apiClient.post('api/Product', newItem, { headers });
+    setIsModalOpen(false);
+    // Reset form and refresh data
+    setNewItem({
+      name: "",
+      costPrice: 0,
+      price: 0,
+      units: "",
+      quantity: 0,
+      threshold: 0,
+      imageUrl: "",
+      categoryId: ""
+    });
+    // Refresh the table data
+    fetchData();
+  } catch (error) {
+    console.error("Error adding item:", error);
+  }
+};
+
 const { handleEdit, handleSave, toggleActive } = useMemo(() => {
  const handleEdit = (id) => {
    const item = data.find((item) => item.id === id);
@@ -308,10 +353,6 @@ const columns = useMemo(() => [
  },
 ], [editingRowId, editableItem, handleEdit, handleSave, toggleActive]);
 
-
-
-
-
 // 4. Basic table instance
 const {
 getTableProps,
@@ -378,7 +419,8 @@ return (
   <div className='table-header'>
     <div className='header-content'>
       <h3 className='table-title'>Inventory Items</h3>
-      <form onSubmit={handleSearch} className="search-form">
+      <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <form onSubmit={handleSearch} className="search-form">
           <div className="search-input-container">
             <FaSearch className="search-icon" />
             <input
@@ -390,7 +432,29 @@ return (
             />
           </div>
         </form>
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="add-item-button"
+          style={{
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            padding: '8px 16px',
+            borderRadius: '20px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontWeight: '500',
+            transition: 'background-color 0.2s',
+          }}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
+        >
+          <FaPlus /> Add Item
+        </button>
       </div>
+    </div>
     <hr className='header-line' />
   </div>
   <div className="table-content">
@@ -435,9 +499,140 @@ return (
     </table>
     {loading && <div>Loading...</div>}
   </div>
+  {isModalOpen && (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 1000,
+    }}>
+      <div style={{
+        backgroundColor: 'white',
+        padding: '24px',
+        borderRadius: '8px',
+        width: '100%',
+        maxWidth: '500px',
+        maxHeight: '90vh',
+        overflowY: 'auto',
+        position: 'relative',
+      }}>
+        <button 
+          onClick={() => setIsModalOpen(false)}
+          style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            background: 'none',
+            border: 'none',
+            fontSize: '20px',
+            cursor: 'pointer',
+            color: '#666',
+          }}
+        >
+          ×
+        </button>
+        <h2 style={{ marginBottom: '20px', color: '#333' }}>Add New Item</h2>
+        <form onSubmit={handleAddItem}>
+          {['name', 'units', 'imageUrl', 'categoryId'].map(field => (
+            <div key={field} style={{ marginBottom: '15px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '5px',
+                fontWeight: '500',
+                color: '#444',
+              }}>
+                {field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')}:
+              </label>
+              <input
+                type={field === 'imageUrl' ? 'url' : 'text'}
+                name={field}
+                value={newItem[field]}
+                onChange={handleInputChange}
+                required={field !== 'imageUrl'}
+                style={{
+                  width: '100%',
+                  padding: '8px 12px',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+          ))}
+          
+          {['costPrice', 'price', 'quantity', 'threshold'].map(field => (
+            <div key={field} style={{ marginBottom: '15px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '5px',
+                fontWeight: '500',
+                color: '#444',
+              }}>
+                {field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')}:
+              </label>
+              <input
+                type="number"
+                name={field}
+                value={newItem[field]}
+                onChange={handleInputChange}
+                min="0"
+                step={field.includes('Price') ? '0.01' : '1'}
+                required
+                style={{
+                  width: '100%',
+                  padding: '8px 12px',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px',
+                  fontSize: '14px',
+                }}
+              />
+            </div>
+          ))}
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            gap: '10px',
+            marginTop: '20px',
+          }}>
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(false)}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: '#f5f5f5',
+                border: '1px solid #ddd',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              style={{
+                padding: '8px 16px',
+                backgroundColor: '#4CAF50',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Add Item
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )}
 </div>
 );
 }
 export default Inventory2;
-
-
