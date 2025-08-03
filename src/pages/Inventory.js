@@ -426,13 +426,15 @@ function Inventory() {
                       //   value: row[column.accessor],
                       //   column
                       // });
-
-                      const Cell = column.Cell || (({ value }) => value);
+                      let cellContent;
+                      if (column.Cell){
+                        cellContent = column.Cell({ value, row: { original: row } });
+                      }else{
+                        cellContent = value;
+                      }
                       return(
                       <td key={`${row.id}-${column.accessor}`}>
-                        {column.Cell 
-                          ? column.Cell({ value, row: { original: row } }) 
-                          : value}
+                        {cellContent}
                       </td>
                       );
                     })}
