@@ -140,10 +140,12 @@ function Inventory() {
         accessor: "category",
         id: "category",
         Cell: ({ value }) => {
-          console.log("Value: ", value);
-          return value?.name || 'N/A';
-
+          if (typeof value === 'object' && value !== null) {
+            return value.name || 'N/A';
+          }
+          return 'N/A';
         }
+        
       },
       {
   Header: "Quantity",
