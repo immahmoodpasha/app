@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../styles/Dashboard.css';
-import Inventory from "./Inventory";
+import Inventory2 from "./Inventory2";
 import InventorySummary from "./InventorySummary";
 import InventoryTrends from "./InventoryTrends";
 import CategoryDistribution from "./CategoryDistribution";
@@ -44,10 +44,7 @@ const Dashboard = () => {
                     <div id="tab-content">
                         <div id="left-dash">
                             <div id="inventory">
-                                <Inventory />
-                            </div>
-                            <div id="inventoryTrends">
-                                <InventoryTrends />
+                                <Inventory2 />
                             </div>
                         </div>
                         

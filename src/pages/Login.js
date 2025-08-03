@@ -67,7 +67,7 @@ function Login() {
         const jwt = response.data.data.jwtToken;
         console.log(jwt);
         login(jwt);
-        navigate('/OverviewAnalytics');
+        navigate('/dashboard');
       }
     }catch(error){
       console.log(error);

@@ -45,7 +45,7 @@ function CategoryDistribution() {
        <div className='card-content'>
            <h3 id='Heading2'>Inventory Categories</h3>
            <div className='total-Items-in-Categories'>
-               <h3 id='titems'>{totalItemsInCategories}</h3>
+               <h3 id='titems'>{totalCategories}</h3>
                <span><p id='New-Categories-added'>↑ {recentlyAddedCategories} new</p></span>
                <p id='iconcategory'>
                    <img src={piecharticon} alt="piechart Icon " id="iconimg"/>
