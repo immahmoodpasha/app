@@ -127,7 +127,8 @@ function Inventory() {
   }, [data, editableItem, editingRowId]);
 
   const columns = useMemo(
-    () => [
+    () => {
+      const cols = [
       {
         Header: "Item Name",
         accessor: "itemName",
@@ -272,7 +273,10 @@ function Inventory() {
           );
         },
       },
-    ],
+    ];
+  console.log("Columns definition:", cols);
+  return cols;
+  },
     [editingRowId, editableItem, handleEdit, handleSave, toggleActive]
   );
 
