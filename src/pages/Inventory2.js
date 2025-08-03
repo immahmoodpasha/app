@@ -436,7 +436,7 @@ return (
           onClick={() => setIsModalOpen(true)}
           className="add-item-button"
           style={{
-            backgroundColor: '#4CAF50',
+            backgroundColor: '#8a2be2',
             color: 'white',
             border: 'none',
             padding: '8px 16px',
@@ -448,8 +448,8 @@ return (
             fontWeight: '500',
             transition: 'background-color 0.2s',
           }}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#4c187d'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#8a2be2'}
         >
           <FaPlus /> Add Item
         </button>
