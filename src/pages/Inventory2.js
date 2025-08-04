@@ -11,6 +11,7 @@ import sort from '../assets/sort.png'
 import sortUp from '../assets/sortUp.png'
 import sortDown from '../assets/sortDown.png'
 import barGraph from '../assets/barGraph.png'
+import ProductPriceAnalysisModal from "../components/ProductPriceAnalysisModal";
 
 import {
 useTable,
@@ -32,6 +33,7 @@ const SortIcon = ({ active, isAsc }) => (
 
 const Inventory2 = () => {
 // 2. Simplify the component state
+const [selectedProductId, setSelectedProductId] = useState(null);
 const [loading, setLoading] = useState(false);
 const [data, setData] = useState([]);
 const [editingRowId, setEditingRowId] = useState(null);
@@ -65,6 +67,8 @@ const [editPopup, setEditPopup] = useState({
   field: 'quantity',
 });
 const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
+const [productPriceData, setProductPriceData] = useState({});
+
 
 const handleEditPopup = (row) => {
   setEditPopup({
@@ -225,9 +229,23 @@ const { handleEdit, handleSave, toggleActive } = useMemo(() => {
  return { handleEdit, handleSave, toggleActive };
 }, [data, editableItem, editingRowId]);
 
-const handleProductPrice = (row) => {
-
-}
+// Handler to open the price analysis popup and fetch data
+const handleProductPrice = async (row) => {
+  setIsPriceModalOpen(true);
+  try {
+    const response = await apiClient.get(`api/Statistics/ProductPriceAnalysis/${row.original.id}`, { headers });
+    if (response.data && response.data.data) {
+      setProductPriceData(response.data.data);
+      console.log('Product Price Data:', response.data.data);
+    } else {
+      setProductPriceData({});
+      console.warn('No data received for product price analysis');
+    }
+  } catch (error) {
+    setProductPriceData({});
+    console.error('Error fetching product price analysis:', error);
+  }
+};
 
 // 3. Basic columns definition
 const columns = useMemo(() => [
@@ -377,16 +395,16 @@ const columns = useMemo(() => [
          >
            <FiEdit2 size={22} style={{ color: "#8a2be2" }} />
          </button>
-         <button
-          onClick={()=>{setIsPriceModalOpen(true)}}
-         >
-           <img src={barGraph} />
+         <button onClick={() => setSelectedProductId(row.original.id)}>
+            <img src={barGraph} alt="Price Analysis" />
          </button>
        </div>
      );
    },
  },
 ], [editingRowId, editableItem, handleEdit, handleSave, toggleActive]);
+
+console.log("PPD",productPriceData);
 
 // 4. Basic table instance
 const {
@@ -905,95 +923,13 @@ return (
     </div>
   </div>
 )}
-{isPriceModalOpen? <div
-  style={{
-    position: 'fixed',
-    top: 0, left: 0, right: 0, bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 2000,
-  }}
->
-  <div className='graph-container'>
-           <div className='graph-header'>
-               <h3 id='graph-header-text'>Revenue Growth</h3>
-               <hr></hr>
-           </div>
-               <div className='graphh'>
-                   <ResponsiveContainer width="100%" height={400}>
-                       <AreaChart data={yearlyRevenue} margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
-                       <defs>
-                           <linearGradient id="gradientStroke" x1="1  " y1="0" x2="0" y2="1">
-                               <stop offset="0%" stopColor="rgba(0, 26, 255, 1)" />
-                               <stop offset="10%" stopColor="rgba(0, 26, 255, 0.95)" />
-                               <stop offset="20%" stopColor="rgba(0, 26, 255, 0.65)" />
-                               <stop offset="25%" stopColor="rgba(0, 26, 255, 0.5)" />
-                               <stop offset="30%" stopColor="rgba(0, 26, 255, 0.45)" />
-                               <stop offset="35%" stopColor="rgba(0, 26, 255, 0.35)" />
-                               <stop offset="50%" stopColor="rgba(0, 26, 255, 0.25)" />
-                               <stop offset="75%" stopColor="rgba(0, 26, 255, 0.1)" />
-                               <stop offset="100%" stopColor="rgba(0, 26, 255, 0.0)" />
-                           </linearGradient>
-                       </defs>
-                           <XAxis dataKey="month" tick={{ fontSize: 10 }} axisLine={false}/>
-                           <YAxis tick={{ fontSize: 10 }} axisLine={false}/>
-                           <Tooltip   itemStyle={{color: '#002164ff' }}
-                                      formatter={(value) => `₹${value.toLocaleString("en-IN")}`}
-                                      labelStyle={{ color: '#000000ff', fontWeight:300 }}
-                                      contentStyle={{
-                                      backgroundColor: '#0037ff39',
-                                      border: 'none',
-                                      borderRadius: '5px',
-                                      boxShadow: '0px 1px 0px 3px #16de0b38'
-                                   }}
-                           />
-                           <Line
-                                       type="monotone"
-                                       dataKey="revenue"                                                                               
-                                       stroke="#4f46e5"
-                                       strokeWidth={3}
-                                       dot={{ r: 5, fill: '#ffffffff', stroke: '#4f46e5', strokeWidth: 2 }}
-                           />
-                           <Area
-                               type="monotone"
-                               dataKey="revenue"
-                               stroke="url(#gradientStroke)"
-                               fill="url(#gradientStroke)"
-                           />
-                       </AreaChart>
-                   </ResponsiveContainer>
-               </div>
-               <div className='graphh-footer' style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                   <div className='graphh-footer-box'>
-                       <div>
-                           <h1 id='graph-footer-header'>Total Orders</h1>
-                           <h1 id='total-orders'>{totalOrders}</h1>
-                       </div>
-                       <img src={cart} alt="logo" style={{height: '40px'}} id='footer-icon'/>
-                   </div>
-                   <div className='graphh-footer-box'>
-                       <div>
-                           <h1 id='graph-footer-header'>Pending</h1>
-                           <h1 id='total-orders'>{pendingOrders}</h1>
-                       </div>
-                       <img src={clock} alt="logo" style={{height: '40px'}} id='footer-icon'/>
-                   </div>
-                   <div className='graphh-footer-box'>
-                       <div>
-                           <h1 id='graph-footer-header'>Completed</h1>
-                           <h1 id='total-orders'>{completedOrders}</h1>
-                       </div>
-                       <img src={checkmark} alt="logo" style={{height: '40px'}} id='footer-icon'/>
-                   </div>
-               </div>
-       </div>
-       <button onClick={()=>{setIsPriceModalOpen(false)}}>Close</button>
-</div>  
-: ''
-}
-
+{selectedProductId && (
+  <ProductPriceAnalysisModal
+    productId={selectedProductId}
+    headers={headers}
+    onClose={() => setSelectedProductId(null)}
+  />
+)}
 </div>
 
 );
