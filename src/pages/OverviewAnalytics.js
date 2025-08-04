@@ -11,6 +11,7 @@ import cancel from '../assets/remove.png';
 import { AreaChart,Line, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, defs, linearGradient, LabelList} from 'recharts';
 import { useJWT } from "../jwtContextProvider.js";
 import apiClient from "../apiClient/axiosObject.js";
+import fire from '../assets/fire.webp'
 
 
 function OverviewAnalytics() {
@@ -47,7 +48,7 @@ function OverviewAnalytics() {
            {/* ************************* */}
            <div className='oa-header-card'>
                <div className='oa-header-content'>
-                   <img src={cash} alt="logo" style={{height: '12px'}} id='img1' />
+                   <img src={cash} alt="logo" style={{height: '40px'}} id='img1' />
                    <p id='card-main-text'>Total Sales</p>
                </div>
                <div className='card-main-value-div'>
@@ -57,7 +58,7 @@ function OverviewAnalytics() {
             {/* ************************* */}
             <div className='oa-header-card'>
                <div className='oa-header-content'>
-                   <img src={money} alt="logo" style={{height: '12px'}} id='img3' />
+                   <img src={money} alt="logo" style={{height: '40px'}} id='img3' />
                    <p id='card-main-text'>Avg. Order Value</p>
                </div>
                <div className='card-main-value-div'>
@@ -68,7 +69,7 @@ function OverviewAnalytics() {
             {/* ************************* */}
             <div className='oa-header-card'>
                <div className='oa-header-content'>
-                   <img src={percent} alt="logo" style={{height: '12px'}} id='img2' />
+                   <img src={percent} alt="logo" style={{height: '40px'}} id='img2' />
                    <p id='card-main-text'>Active Customers</p>
                </div>
                <div className='card-main-value-div'>
@@ -78,7 +79,7 @@ function OverviewAnalytics() {
             {/* ************************* */}
             <div className='oa-header-card'>
                <div className='oa-header-content'>
-                   <img src={percent} alt="logo" style={{height: '12px'}} id='img2' />
+                   <img src={fire} alt="logo" style={{height: '40px', width: '40px'}} id='img5' />
                    <p id='card-main-text'>Most Sold Product</p>
                </div>
                <div className='card-main-value-div'  style={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '4%'}}>
@@ -144,21 +145,21 @@ function OverviewAnalytics() {
                            <h1 id='graph-footer-header'>Total Orders</h1>
                            <h1 id='total-orders'>{totalOrders}</h1>
                        </div>
-                       <img src={cart} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                       <img src={cart} alt="logo" style={{height: '40px'}} id='footer-icon'/>
                    </div>
                    <div className='graphh-footer-box'>
                        <div>
                            <h1 id='graph-footer-header'>Pending</h1>
                            <h1 id='total-orders'>{pendingOrders}</h1>
                        </div>
-                       <img src={clock} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                       <img src={clock} alt="logo" style={{height: '40px'}} id='footer-icon'/>
                    </div>
                    <div className='graphh-footer-box'>
                        <div>
                            <h1 id='graph-footer-header'>Completed</h1>
                            <h1 id='total-orders'>{completedOrders}</h1>
                        </div>
-                       <img src={checkmark} alt="logo" style={{height: '20px'}} id='footer-icon'/>
+                       <img src={checkmark} alt="logo" style={{height: '40px'}} id='footer-icon'/>
                    </div>
                </div>
        </div>

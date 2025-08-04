@@ -30,8 +30,8 @@ const Dashboard = () => {
                     <div id="profileIcon-cont">
                         <div id="btn-header">
                             <div id='navMenu'>
-                                <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')}>Inventory</div>
-                                <div id="statisticsOption" onClick={()=>setSelectedOption('St')}>Statistics</div>
+                                <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')} style={{backgroundColor: `${selectedOption==='Inv'? '#5f037e' : '#8404ae'}`}}>Inventory</div>
+                                <div id="statisticsOption" onClick={()=>setSelectedOption('St')} style={{backgroundColor: `${selectedOption==='St'? '#5f037e' : '#8404ae'}`}}>Statistics</div>
                             </div>
                             <button id="logout-manager" onClick={logoutFxn}><FiLogOut size={24} /></button>
                         </div>

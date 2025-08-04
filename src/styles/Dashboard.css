@@ -79,6 +79,10 @@ div#btn-header {
     background-color: #5f037e;
 }
 
+#inventoryOption:active, #statisticsOption:active{
+    background-color: #5f037e;
+}
+
 
 
 
