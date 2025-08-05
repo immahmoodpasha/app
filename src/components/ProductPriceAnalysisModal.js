@@ -39,7 +39,7 @@ const ProductPriceAnalysisModal = ({ productId, headers, onClose }) => {
         zIndex: 2000,
       }}
     >
-      <div className="graph-container" style={{ background: "white", borderRadius: 8, padding: 24, minWidth: 350, maxWidth: 700 }}>
+      <div className="graph-container" style={{ background: "white", borderRadius: 8, padding: 24, width: '80%'}}>
         <div className="graph-header">
           <h3 id="graph-header-text">Product Price Analysis</h3>
           <hr />
@@ -130,7 +130,7 @@ const ProductPriceAnalysisModal = ({ productId, headers, onClose }) => {
         ) : (
           <div style={{ textAlign: "center", padding: 40 }}>No price analysis data available.</div>
         )}
-        <button onClick={onClose} style={{ marginTop: 24, display: "block", marginLeft: "auto", marginRight: "auto" }}>
+        <button onClick={onClose} style={{ marginTop: 24, display: "block", marginLeft: "auto", marginRight: "auto", backgroundColor: '#8404ae', color: 'white', padding: '1%', paddingRight: '2%', paddingLeft: '2%',border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
           Close
         </button>
       </div>

@@ -375,7 +375,7 @@ const columns = useMemo(() => [
    disableSortBy: true,
    Cell: ({ row }) => {
      return (
-       <div className="action-buttons" style={{ justifyContent: 'center' }}>
+       <div className="action-buttons" style={{ justifyContent: 'center', alignItems: 'center' }}>
          <button
            onClick={() => handleEditPopup(row)}
            style={{
@@ -395,9 +395,16 @@ const columns = useMemo(() => [
          >
            <FiEdit2 size={22} style={{ color: "#8a2be2" }} />
          </button>
-         <button onClick={() => setSelectedProductId(row.original.id)}>
-            <img src={barGraph} alt="Price Analysis" />
-         </button>
+         <button style={{
+    background: "none",
+    border: "none",
+    padding: 0,
+    cursor: "pointer",
+    display: "flex",
+    alignItems: "center"
+  }} onClick={() => setSelectedProductId(row.original.id)}>
+  <img src={barGraph} alt="Price Analysis" style={{ width: 24, height: 24 }} />
+</button>
        </div>
      );
    },
