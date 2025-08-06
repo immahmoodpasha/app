@@ -108,6 +108,15 @@
     overflow: hidden;
 }
 
+#bar-cont-blue{
+    margin: 2%;
+    border-radius: 20px;
+    height: 0.4rem;
+    background-color:  #f1d6fa;
+    opacity: 80%;
+    overflow: hidden;
+}
+
 #bar-cont-orange{
     margin: 2%;
     border-radius: 20px;
@@ -128,6 +137,13 @@
 
 #bar-green{
     background-color: rgb(41, 255, 41);
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 20px;
+}
+
+#bar-blue{
+    background-color: #be06fc;
     height: 100%;
     transition: width 0.3s ease;
     border-radius: 20px;

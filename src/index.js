@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {JWTProvider} from './jwtContextProvider';
+import {RefreshContextProvider} from './refreshContextProvider';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <JWTProvider>
-            <App />
-        </JWTProvider>
+        <RefreshContextProvider>
+            <JWTProvider>
+                <App />
+            </JWTProvider>
+        </RefreshContextProvider>
+        
     </React.StrictMode>
     
 );

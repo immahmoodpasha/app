@@ -10,6 +10,7 @@ import { FiSearch, FiMessageCircle, FiLink, FiLogOut } from 'react-icons/fi';
 import exit from "../assets/exit.png"
 import logo from "../assets/RapiddLogo.png"
 import { useJWT } from "../jwtContextProvider";
+import { useRefresh } from "../refreshContextProvider";
 import { useNavigate } from "react-router-dom";
 
 
@@ -21,6 +22,7 @@ const Dashboard = () => {
         logout();
         navigate('/');
     }
+    const {refresh} = useRefresh();
     
     return(
         <div id="dashboard">
@@ -30,6 +32,7 @@ const Dashboard = () => {
                     <div id="profileIcon-cont">
                         <div id="btn-header">
                             <div id='navMenu'>
+                                <div id="refreshBtn" onClick={()=>{refresh()}}>Refresh</div>
                                 <div id="inventoryOption" onClick={()=>setSelectedOption('Inv')} style={{backgroundColor: `${selectedOption==='Inv'? '#5f037e' : '#8404ae'}`}}>Inventory</div>
                                 <div id="statisticsOption" onClick={()=>setSelectedOption('St')} style={{backgroundColor: `${selectedOption==='St'? '#5f037e' : '#8404ae'}`}}>Statistics</div>
                             </div>

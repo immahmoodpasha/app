@@ -3,6 +3,7 @@ import "../styles/CategoryDistribution.css";
 import piecharticon from '../assets/pie-chart-icon.png'
 import { useJWT } from "../jwtContextProvider.js";
 import apiClient from "../apiClient/axiosObject.js";
+import { useRefresh } from "../refreshContextProvider.js";
 
 
 function CategoryDistribution() {
@@ -24,7 +25,7 @@ function CategoryDistribution() {
             setLoading(false);
         }
     };
-        
+    const {refreshKey} = useRefresh();
     console.log('This is CAT DIST');
 
 
@@ -46,7 +47,6 @@ function CategoryDistribution() {
            <h3 id='Heading2'>Inventory Categories</h3>
            <div className='total-Items-in-Categories'>
                <h3 id='titems'>{totalCategories}</h3>
-               <span><p id='New-Categories-added'>↑ {recentlyAddedCategories} new</p></span>
                <p id='iconcategory'>
                    <img src={piecharticon} alt="piechart Icon " id="iconimg"/>
                </p>
@@ -68,20 +68,9 @@ function CategoryDistribution() {
                            <span key={index}>{categories.items}</span>
                        </div>
                    </div>
-                   {percentage > 80 ? (
-                           <div id='bar-cont-green'>
-                               <div id='bar-green' style={{ width: `${percentage}%` }}></div>
-                           </div>
-                           ) : percentage > 40 ? (
-                           <div id='bar-cont-orange'>
-                               <div id='bar-orange' style={{ width: `${percentage}%` }}></div>
-                           </div>
-                           ) : (
-                           <div id='bar-cont-red'>
-                               <div id='bar-red' style={{ width: `${percentage}%` }}></div>
-                           </div>
-                           )
-                   }
+                    <div id='bar-cont-blue'>
+                        <div id='bar-blue' style={{ width: `${percentage}%` }}></div>
+                    </div>
 
                    
                </div>

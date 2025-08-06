@@ -12,6 +12,7 @@ import OverviewAnalytics from './pages/OverviewAnalytics';
 import ProtectedRoute from './ProtectedRoute';
 import "./App.css";
 
+
 function App() {
   return (
     <div className='App'>
@@ -19,14 +20,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route element={<ProtectedRoute />}>
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path="/inventory" element={<Inventory2 />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path="/inventory" element={<Inventory2 />} />
+              <Route path="/InventorySummary" element={<InventorySummary />} />
+              <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
+              <Route path="/OverviewAnalytics" element={<OverviewAnalytics />} />
+
             <Route path="/newproduct" element={<NewProduct />} />
-            <Route path="/InventorySummary" element={<InventorySummary />} />
-            <Route path="/CategoryDistribution" element={<CategoryDistribution />} />
-            <Route path="/InventoryTrends" element={<InventoryTrends />} />
-            <Route path="/CategoryRevenue" element={<CategoryRevenue />} />
-            <Route path="/OverviewAnalytics" element={<OverviewAnalytics />} />
+            
           </Route>
           
         </Routes>

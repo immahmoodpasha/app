@@ -3,11 +3,13 @@ import "../styles/InventorySummary.css";
 import InnventoryIcon from '../assets/inventory_icon.png'
 import apiClient from "../apiClient/axiosObject.js";
 import { useJWT } from "../jwtContextProvider.js";
+import { useRefresh } from '../refreshContextProvider.js';
 
 function InventorySummary() {
    const {getAuthHeader} = useJWT();
    const headers = getAuthHeader();
    const [loading, setLoading] = useState(false);
+   const {refreshKey} = useRefresh();
    const [data, setData] = useState(null);
         const fetchData = async () => {
             setLoading(true);
@@ -25,7 +27,7 @@ function InventorySummary() {
        useEffect(()=> {
         console.log('CatDist')
            fetchData();
-       }, [])
+       }, [refreshKey])
 
        if (!data) return <p>Loading...</p>;
        const {totalItems,changeInPercentage,lastUpdated,inStock,lowStock,outOfStock} = data
@@ -46,7 +48,6 @@ function InventorySummary() {
            <h3 id='Heading2'>Total Inventory Items</h3>
            <div className='Total-Items'>
                <h3 id='titems'>{totalItems}</h3>
-               <span><p id='perchange'>↑ {changeInPercentage}% from last month</p></span>
                <p id='icon1'>
                    <img src={InnventoryIcon} alt="Inventory Icon" style={{height: '25px'}}/>
                </p>

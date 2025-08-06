@@ -12,6 +12,7 @@ import { AreaChart,Line, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Carte
 import { useJWT } from "../jwtContextProvider.js";
 import apiClient from "../apiClient/axiosObject.js";
 import fire from '../assets/fire.webp'
+import { useRefresh } from '../refreshContextProvider.js';
 
 
 function OverviewAnalytics() {
@@ -32,11 +33,11 @@ function OverviewAnalytics() {
              setLoading(false);
            }
           };
-  
+  const {refreshKey} = useRefresh();
 
    useEffect(()=> {
        fetchData();
-   }, [])
+   }, [refreshKey])
 
    if(!data) return <p>Data not Fetched</p>
    // ************************
@@ -123,18 +124,19 @@ function OverviewAnalytics() {
                                       boxShadow: '0px 1px 0px 3px #16de0b38'
                                    }}
                            />
-                           <Line
+                           {/* <Line
                                        type="monotone"
                                        dataKey="revenue"                                                                               
                                        stroke="#4f46e5"
                                        strokeWidth={3}
                                        dot={{ r: 5, fill: '#ffffffff', stroke: '#4f46e5', strokeWidth: 2 }}
-                           />
+                           /> */}
                            <Area
                                type="monotone"
                                dataKey="revenue"
-                               stroke="url(#gradientStroke)"
+                               stroke="rgba(0, 26, 255, 1)"
                                fill="url(#gradientStroke)"
+                               strokeWidth={2}
                            />
                        </AreaChart>
                    </ResponsiveContainer>

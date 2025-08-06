@@ -23,7 +23,7 @@ import { useJWT } from "../jwtContextProvider.js";
 import {debounce, values} from 'lodash';
 import '../styles/Inventory.css'
 import { AreaChart,Line, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, defs, linearGradient, LabelList} from 'recharts';
-
+import { useRefresh } from "../refreshContextProvider.js";
 
 const SortIcon = ({ active, isAsc }) => (
   <span style={{ marginLeft: 6, fontSize: 14, color: active ? '#8a2be2' : '#bbb', verticalAlign: 'middle' }}>
@@ -68,6 +68,8 @@ const [editPopup, setEditPopup] = useState({
 });
 const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
 const [productPriceData, setProductPriceData] = useState({});
+
+const { refreshKey} = useRefresh();
 
 
 const handleEditPopup = (row) => {
@@ -131,7 +133,7 @@ const handleEditPopupSubmit = async (e) => {
     }
   };
     fetchCategories();
-  },[loading]);
+  },[loading,refreshKey]);
 
 // Add this function to handle search
 const handleSearch = (e) => {
@@ -323,7 +325,8 @@ const columns = useMemo(() => [
    Cell: ({ row, value }) => {
      if (value === "Out Of Stock") return "Out of Stock";
      if (value === "Low Stock") return "Low Stock";
-     return "In Stock";
+     if (value === "In Stock") return "In Stock"
+     return "N/A";
    }
  },
  {
@@ -456,7 +459,7 @@ useEffect(() => {
   }, 300); // Add debounce to prevent too many requests
 
   return () => clearTimeout(timer);
-}, [serverParams]);
+}, [serverParams, refreshKey]);
 
 if (loading) {
 return (
@@ -611,7 +614,7 @@ return (
                 width: '100px',
                 padding: '8px 0',
                 borderRadius: '10px',
-                cursor: 'pointer'
+                cursor: `${serverParams.pageNumber===1? 'disabled' : 'pointer' }`
               }}
               onClick={()=>{
                 setServerParams((prev)=>({

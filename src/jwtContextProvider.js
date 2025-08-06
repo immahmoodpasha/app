@@ -4,8 +4,7 @@ const jwtContext = createContext(null);
 
 export const JWTProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('jwtToken'));
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('jwtToken'));
     useEffect(()=>{
         const storedToken = localStorage.getItem('jwtToken');
         if (storedToken){
