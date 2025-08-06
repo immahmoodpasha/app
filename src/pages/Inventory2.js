@@ -26,7 +26,7 @@ import { AreaChart,Line, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, Carte
 import { useRefresh } from "../refreshContextProvider.js";
 
 const SortIcon = ({ active, isAsc }) => (
-  <span style={{ marginLeft: 6, fontSize: 14, color: active ? '#8a2be2' : '#bbb', verticalAlign: 'middle' }}>
+  <span style={{ marginLeft: 6, fontSize: 14, color: active ? '#8404ae' : '#bbb', verticalAlign: 'middle' }}>
     {active ? (isAsc ? <img src={sortUp} height={'20px'}/> : <img src={sortDown} height={'20px'}/>) : <img src={sort} height={'20px'}/>}
   </span>
 );
@@ -363,9 +363,9 @@ const columns = useMemo(() => [
            title={isActive ? "Deactivate" : "Activate"}
          >
            {isActive ? (
-             <FaCheckSquare size={24} style={{ color: "#8a2be2" }} />
+             <FaCheckSquare size={24} style={{ color: "#8404ae" }} />
            ) : (
-             <FaRegSquare size={24} style={{ color: "#8a2be2" }} />
+             <FaRegSquare size={24} style={{ color: "#8404ae" }} />
            )}
          </button>
        </div>
@@ -396,7 +396,7 @@ const columns = useMemo(() => [
            }}
            title="Edit"
          >
-           <FiEdit2 size={22} style={{ color: "#8a2be2" }} />
+           <FiEdit2 size={22} style={{ color: "#8404ae" }} />
          </button>
          <button style={{
     background: "none",
@@ -522,7 +522,7 @@ return (
           onClick={() => setIsModalOpen(true)}
           className="add-item-button"
           style={{
-            backgroundColor: '#8a2be2',
+            backgroundColor: '#8404ae',
             color: 'white',
             border: 'none',
             padding: '8px 16px',
@@ -534,8 +534,8 @@ return (
             fontWeight: '500',
             transition: 'background-color 0.2s',
           }}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#4c187d'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#8a2be2'}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#5f037e'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#8404ae'}
         >
           <FaPlus /> Add Item
         </button>
@@ -607,7 +607,7 @@ return (
           <td colSpan={columns.length} style={{ textAlign: 'center', padding: '16px 0', border: 'none' }}>
             <div style={{ display: 'inline-flex', gap: '24px', justifyContent: 'center', alignItems:'center' }}>
               <button style={{
-                backgroundColor: `${serverParams.pageNumber===1? '#bb97db' : '#8a2be2' }`,
+                backgroundColor: `${serverParams.pageNumber===1? '#bb97db' : '#8404ae' }`,
                 color: 'white',
                 fontSize: '16px',
                 border: 'none',
@@ -630,7 +630,7 @@ return (
                 {serverParams.pageNumber}
               </div>
               <button style={{
-                backgroundColor: `${serverParams.pageNumber>=Math.ceil(totalItems/10)? '#bb97db' : '#8a2be2' }`,
+                backgroundColor: `${serverParams.pageNumber>=Math.ceil(totalItems/10)? '#bb97db' : '#8404ae' }`,
                 color: 'white',
                 fontSize: '16px',
                 border: 'none',
