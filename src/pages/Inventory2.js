@@ -316,7 +316,7 @@ const columns = useMemo(() => [
          }
        />
      ) : (
-       value ? `$${value.toFixed(2)}` : '$0.00'
+       value ? `₹${value.toFixed(2)}` : '₹0.00'
      )
  },
  {

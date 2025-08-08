@@ -6,23 +6,23 @@ import { useJWT } from "../jwtContextProvider.js";
 import { useRefresh } from '../refreshContextProvider.js';
 
 function InventorySummary() {
-   const {getAuthHeader} = useJWT();
-   const headers = getAuthHeader();
-   const [loading, setLoading] = useState(false);
-   const {refreshKey} = useRefresh();
-   const [data, setData] = useState(null);
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const response = await apiClient.get("api/Statistics/InventorySummary", {headers});
-                setData(response.data.data || []);
-                console.log("Data fetched:", response.data.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
+    const {getAuthHeader} = useJWT();
+    const headers = getAuthHeader();
+    const [loading, setLoading] = useState(false);
+    const {refreshKey} = useRefresh();
+    const [data, setData] = useState(null);
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await apiClient.get("api/Statistics/InventorySummary", {headers});
+            setData(response.data.data || []);
+            console.log("Data fetched:", response.data.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
        useEffect(()=> {
         console.log('CatDist')
